@@ -274,7 +274,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": 6,
     "titulo": "Optimización de parques eólicos basada en datos.",
     "descripcion": "Monitoreo inteligente de aerogeneradores: reduciendo pérdidas financieras con datos",
     "descripcionLargaDetalle": "El proyecto busca optimizar un parque eólico mediante el análisis de datos de aerogeneradores para mitigar pérdidas financieras. La herramienta central consiste en un tablero interactivo para visualizar el rendimiento operativo.",
@@ -318,6 +318,70 @@
       "Python",
       "Jupyter Notebook",
       "Streamlit"
+    ]
+  },
+  {
+    "id": 7,
+    "titulo": "Modelo predictivo de Turnover",
+    "descripcion": "Modelo predictivo que identifica colaboradores en riesgo de renuncia",
+    "descripcionLargaDetalle": "La compañía enfrentaba una elevada rotatividad de personal en sus Centros de Distribución, afectando el cumplimiento de las metas de Shipping en toda la cadena (recepción, almacenaje, picking, embalaje, transporte y entrega). Se desarrolló un modelo predictivo de Machine Learning para anticipar qué colaboradores tenían alta probabilidad de renuncia, junto con un dashboard operativo que prioriza casos por sitio, proceso y líder crítico. El proyecto cubrió las operaciones de Fulfillment y Transportation en Brasil y México.",
+    "tags": [
+      "People Analytics",
+      "Machine Learning"
+    ],
+    "categoria": "Data IA",
+    "industria": "E-commerce",
+    "area": "Recursos Humanos",
+    "objetivoNegocio": [
+      "Comprender los patrones de comportamiento que conducen a la renuncia de los empleados de los Centros de Distribución",
+      "identificar a las personas en riesgo con valor para la compañía y generar planes de acción para retenerlas"
+    ],
+    "tipoSolucion": "Modelo predictivo",
+    "duracionProyecto": "3-6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto",
+      "IA"
+    ],
+    "tecnologia": [
+      "Python 3.13",
+      "XGBoost 2.x",
+      "scikit-learn",
+      "category-encoders",
+      "SHAP",
+      "pandas",
+      "VS Code",
+      "Jupyter",
+      "Poetry"
+    ],
+    "año": "",
+    "pais": "Argentina",
+    "media": "img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-turnover/caso-turnover-img1.png::Vista \"Casos\": 5.633 casos con acción requerida priorizados por nivel de riesgo y probabilidad de renuncia, con filtros por país, site, líder, área y proceso | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-turnover/caso-turnover-img2.png::Vista \"Overall\": ranking de sites, procesos y líderes con mayor criticidad de rotación, y desglose de riesgo por puesto",
+    "problemaTitle": "Rotatividad elevada en toda la operación de Shipping",
+    "problemaItems": "Alcance operativo: la rotatividad afecta todo el proceso —recepción, almacenaje, picking, embalaje, transporte y entrega— dentro de los Centros de Distribución | Impacto en metas: la alta rotación compromete el cumplimiento de todas las metas de Shipping | Cobertura geográfica: el problema se extiende a las operaciones de Fulfillment y Transportation en Brasil y México | Falta de anticipación: no había información que permitiera comprender los patrones de comportamiento que llevan a la renuncia de los colaboradores",
+    "solucionTitle": "Modelo predictivo de turnover con dashboard de riesgo",
+    "solucionItems": "Feature engineering: mapeo, limpieza y construcción de variables a partir de los datos de colaboradores, con análisis de correlación con la variable objetivo | Modelo predictivo (v1): desarrollo de un modelo de Machine Learning para estimar la probabilidad de renuncia por colaborador | Interpretabilidad: uso de shapley values para explicar los factores que impulsan el riesgo de cada caso | Dashboard operativo: plataforma \"Predictivo de Turnover — Shipping\" con vistas Overall y Casos que identifica sites, procesos y líderes críticos | Segmentación de riesgo: clasificación de colaboradores en riesgo Alto/Medio, distinguiendo casos \"Not Regrettable\" y \"Falso Positivo\"",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "6.481: colaboradores analizados | 5.633: casos con acción requerida priorizados | 117: casos \"Not Regrettable\" (no requieren retención activa) | 738: falsos positivos identificados",
+    "impactoAntes": "Sin visibilidad de qué sites, procesos o líderes concentraban el mayor riesgo de rotatividad | Sin capacidad de anticipar qué colaboradores tenían alta probabilidad de renuncia | Sin criterio para diferenciar casos que realmente requerían retención de aquellos que no | Sin patrones claros sobre qué llevaba a la renuncia de empleados en los Centros de Distribución",
+    "impactoDespues": "Identificación de sites, procesos y líderes críticos con mayor criticidad de rotación | 5.633 casos con acción requerida detectados y priorizados por nivel de riesgo (Alto/Medio) y probabilidad | 117 casos clasificados como \"Not Regrettable\" y 738 como falsos positivos, evitando esfuerzos de retención mal dirigidos | Modelo interpretable (shapley values) que explica los factores detrás de cada caso de riesgo",
+    "impactoSummary": "El modelo permitió pasar de una gestión reactiva de la rotatividad a una identificación proactiva de colaboradores en riesgo, priorizando 5.633 casos de acción sobre un universo de 6.481 colaboradores analizados, con foco en las operaciones de Fulfillment y Transportation en Brasil y México.",
+    "fuenteDatos": [
+      "SQL",
+      "BigQuery",
+      "Parquet"
+    ],
+    "tecnologiasUtilizadas": [
+      "Python 3.13",
+      "XGBoost 2.x",
+      "scikit-learn",
+      "category-encoders",
+      "SHAP",
+      "pandas",
+      "VS Code",
+      "Jupyter",
+      "Poetry"
     ]
   }
 ]
