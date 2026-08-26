@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#003366">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#003366"/>
+    <text x="600" y="380" font-family="Inter,sans-serif" font-size="120" font-weight="700" fill="#ffffff" text-anchor="middle">Quales</text>
+    <text x="600" y="470" font-family="Inter,sans-serif" font-size="48" font-weight="700" fill="#8bc53f" text-anchor="middle">Hits</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', sans-serif; }
+  a { color: #619b5c; text-decoration: none; }
+  a:hover { color: #4d7a48; }
+  .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+  html, body { overflow-x: hidden; max-width: 100%; }
+  @keyframes qs-spin { to { transform: rotate(360deg); } }
+  @media (max-width: 768px) {
+    .qs-header, .qs-footer { padding: 16px 20px !important; }
+    .qs-page-pad, .qs-detail-pad { padding-left: 20px !important; padding-right: 20px !important; }
+    .qs-hero-pad { padding: 64px 20px 40px !important; }
+    .qs-hero-title { font-size: 36px !important; }
+    .qs-hero-subtitle { width: 100% !important; font-size: 20px !important; }
+    .qs-cards-grid { flex-direction: column; align-items: stretch !important; }
+    .qs-hero-card { width: 100% !important; height: auto !important; min-height: 320px; padding-bottom: 24px; }
+    .qs-filter-row { flex-direction: column; align-items: stretch !important; }
+    .qs-case-card { width: 100% !important; }
+    .qs-filter-panel { width: 100vw !important; }
+    .qs-ps-grid { grid-template-columns: 1fr !important; }
+    .qs-impacto-header, .qs-impacto-row { grid-template-columns: 1fr !important; gap: 4px !important; text-align: left; }
+    .qs-carousel { aspect-ratio: 4/3 !important; }
+    .qs-carousel-arrow { width: 48px !important; height: 48px !important; }
+    .qs-chip { min-height: 44px; display: inline-flex; align-items: center; }
+    .qs-touch { min-height: 44px !important; }
+    .qs-filter-option { min-height: 44px; }
+  }
+  @media (max-width: 480px) {
+    .qs-hero-title { font-size: 28px !important; }
+    .qs-hero-subtitle { font-size: 17px !important; }
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#fff;font-family:'Inter',sans-serif;">
+
+<sc-if value="{{ isLoadingCasos }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:#003366;display:flex;align-items:center;justify-content:center;z-index:200;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="width:36px;height:36px;border-radius:50%;border:3px solid rgba(255,255,255,0.25);border-top-color:#8bc53f;animation:qs-spin 0.8s linear infinite;"></div>
+      <p style="color:#fff;font-size:15px;font-weight:500;margin:0;">Cargando casos…</p>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ============ HOME ============ -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;min-height:100vh;">
+  <header style="width:100%;border-bottom:1px solid rgba(0,0,0,0.1);">
+    <div class="qs-header" style="display:flex;align-items:center;justify-content:space-between;padding:24px 64px;">
+      <button onClick="{{ goHome }}" style="border:none;background:none;padding:0;cursor:pointer;height:40px;width:138px;">
+        <img alt="Logo" src="assets/logo.png" style="height:100%;width:100%;object-fit:contain;object-position:left;">
+      </button>
+      <nav style="display:flex;gap:32px;align-items:center;font-size:16px;font-weight:500;letter-spacing:-0.08px;">
+        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:16px;font-weight:500;">Home</button>
+        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:16px;font-weight:500;">Hits</button>
+      </nav>
+    </div>
+  </header>
+
+  <section style="flex:1 0 auto;position:relative;width:100%;background:radial-gradient(120% 120% at 20% 0%, #01417f 0%, #003366 45%, #012449 100%);overflow:hidden;">
+    <div class="qs-hero-pad" style="display:flex;flex-direction:column;align-items:center;gap:72px;padding:120px 64px 64px;position:relative;">
+      <div style="display:flex;flex-direction:column;gap:24px;align-items:center;width:100%;">
+        <div class="qs-hero-title" style="font-weight:700;font-size:64px;text-align:center;color:#fff;letter-spacing:-1.28px;line-height:1.1;">
+          <div>Ideamos y adaptamos un</div>
+          <div><span style="color:#8bc53f;">Data Journey</span><span> para cada empresa.</span></div>
+        </div>
+        <h4 class="qs-hero-subtitle" style="font-weight:400;font-size:32px;text-align:center;color:#fff;letter-spacing:-0.64px;line-height:1.1;width:740px;margin:0;">Descubre nuestras soluciones tecnológicas diseñadas para llevar tu negocio al siguiente nivel</h4>
+        <div style="height:50px;width:144px;"></div>
+      </div>
+
+      <div class="qs-cards-grid" style="display:flex;gap:24px;align-items:flex-start;justify-content:center;width:100%;flex-wrap:wrap;">
+        <!-- card 1 -->
+        <div class="qs-hero-card" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);height:378px;border-radius:16px;width:352px;position:relative;">
+          <div style="position:absolute;left:33px;top:33px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,#003366 0%,#004488 100%);">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M28 20C28 20.7072 27.719 21.3855 27.219 21.8856C26.7189 22.3857 26.0406 22.6667 25.3333 22.6667H9.33333L4 28V6.66667C4 5.95942 4.28095 5.28115 4.78105 4.78105C5.28115 4.28095 5.95942 4 6.66667 4H25.3333C26.0406 4 26.7189 4.28095 27.219 4.78105C27.719 5.28115 28 5.95942 28 6.66667V20Z" stroke="white" stroke-linecap="round" stroke-width="2.66667"></path></svg>
+          </div>
+          <p style="position:absolute;left:33px;top:121px;margin:0;font-weight:700;font-size:24px;color:#fff;line-height:32px;">Data Strategy</p>
+          <p style="position:absolute;left:33px;top:169px;width:286px;margin:0;font-weight:400;font-size:16px;line-height:26px;color:rgba(255,255,255,0.7);letter-spacing:-0.3px;">Relevamos, diseñamos y definimos cada paso para que tus datos sean confiables y generen valor real.</p>
+          <button onClick="{{ exploreStrategy }}" style="position:absolute;left:33px;top:297px;width:286px;height:48px;background:#8bc53f;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:600;font-size:16px;color:#003366;">Explorar
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="#003366" stroke-linecap="round" stroke-width="1.66667"></path></svg>
+          </button>
+        </div>
+        <!-- card 2 -->
+        <div class="qs-hero-card" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);height:378px;border-radius:16px;width:352px;position:relative;">
+          <div style="position:absolute;left:33px;top:33px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,#8bc53f 0%,#6ea330 100%);">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M4 4V25.3333C4 26.0406 4.28095 26.7189 4.78105 27.219C5.28115 27.719 5.95942 28 6.66667 28H28M24 22.6667V12M17.3333 22.6667V6.66667M10.6667 22.6667V18.6667" stroke="white" stroke-linecap="round" stroke-width="2.66667"></path></svg>
+          </div>
+          <p style="position:absolute;left:33px;top:121px;margin:0;font-weight:700;font-size:24px;color:#fff;line-height:32px;">Data Viz</p>
+          <p style="position:absolute;left:33px;top:169px;width:286px;margin:0;font-weight:400;font-size:16px;line-height:26px;color:rgba(255,255,255,0.7);letter-spacing:-0.3px;">Nos aseguramos que los usuarios interactúen con los datos de forma clara, intuitiva y con impacto estratégico.</p>
+          <button onClick="{{ exploreViz }}" style="position:absolute;left:33px;top:297px;width:286px;height:48px;background:#8bc53f;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:600;font-size:16px;color:#003366;">Explorar
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="#003366" stroke-linecap="round" stroke-width="1.66667"></path></svg>
+          </button>
+        </div>
+        <!-- card 3 -->
+        <div class="qs-hero-card" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);height:378px;border-radius:16px;width:352px;position:relative;">
+          <div style="position:absolute;left:33px;top:33px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,#8bc53f 0%,#6ea330 100%);">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M4 4V25.3333C4 26.0406 4.28095 26.7189 4.78105 27.219C5.28115 27.719 5.95942 28 6.66667 28H28M24 22.6667V12M17.3333 22.6667V6.66667M10.6667 22.6667V18.6667" stroke="white" stroke-linecap="round" stroke-width="2.66667"></path></svg>
+          </div>
+          <p style="position:absolute;left:33px;top:121px;margin:0;font-weight:700;font-size:24px;color:#fff;line-height:32px;">Data Fabric</p>
+          <p style="position:absolute;left:33px;top:169px;width:286px;margin:0;font-weight:400;font-size:16px;line-height:26px;color:rgba(255,255,255,0.7);letter-spacing:-0.3px;">Integramos tecnologías y buenas prácticas para que tu ecosistema de datos sea sólido, automatizado y eficiente.</p>
+          <button onClick="{{ exploreFabric }}" style="position:absolute;left:33px;top:297px;width:286px;height:48px;background:#8bc53f;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:600;font-size:16px;color:#003366;">Explorar
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="#003366" stroke-linecap="round" stroke-width="1.66667"></path></svg>
+          </button>
+        </div>
+        <!-- card 4 -->
+        <div class="qs-hero-card" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);height:378px;border-radius:16px;width:352px;position:relative;">
+          <div style="position:absolute;left:33px;top:33px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,#003366 0%,#8bc53f 100%);">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M14.6667 28.9733C15.0721 29.2074 15.5319 29.3306 16 29.3306C16.4681 29.3306 16.9279 29.2074 17.3333 28.9733L26.6667 23.64C27.0717 23.4062 27.408 23.07 27.6421 22.6651C27.8761 22.2603 27.9995 21.801 28 21.3333V10.6667C27.9995 10.199 27.8761 9.73975 27.6421 9.33488C27.408 8.93002 27.0717 8.59382 26.6667 8.36L17.3333 3.02667C16.9279 2.79262 16.4681 2.6694 16 2.6694C15.5319 2.6694 15.0721 2.79262 14.6667 3.02667L5.33333 8.36C4.92835 8.59382 4.59197 8.93002 4.35795 9.33488C4.12392 9.73975 4.00048 10.199 4 10.6667V21.3333C4.00048 21.801 4.12392 22.2603 4.35795 22.6651C4.59197 23.07 4.92835 23.4062 5.33333 23.64L14.6667 28.9733Z" stroke="white" stroke-linecap="round" stroke-width="2.66667"></path><path d="M16 29.3333V16" stroke="white" stroke-linecap="round" stroke-width="2.66667"></path><path d="M4.38667 9.33333L16 16L27.6133 9.33333" stroke="white" stroke-linecap="round" stroke-width="2.66667"></path><path d="M10 5.69333L22 12.56" stroke="white" stroke-linecap="round" stroke-width="2.66667"></path></svg>
+          </div>
+          <p style="position:absolute;left:33px;top:121px;margin:0;font-weight:700;font-size:24px;color:#fff;line-height:32px;">Data IA</p>
+          <p style="position:absolute;left:33px;top:169px;width:286px;margin:0;font-weight:400;font-size:16px;line-height:26px;color:rgba(255,255,255,0.7);letter-spacing:-0.3px;">Evolucionamos tu arquitectura de datos hacia aplicaciones de IA que generan valor real y escalable.</p>
+          <button onClick="{{ exploreIA }}" style="position:absolute;left:33px;top:297px;width:286px;height:48px;background:#8bc53f;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:600;font-size:16px;color:#003366;">Explorar
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="#003366" stroke-linecap="round" stroke-width="1.66667"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</sc-if>
+
+<!-- ============ CASOS ============ -->
+<sc-if value="{{ isCasos }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;min-height:100vh;">
+  <header style="width:100%;border-bottom:1px solid rgba(0,0,0,0.1);">
+    <div class="qs-header" style="display:flex;align-items:center;justify-content:space-between;padding:24px 64px;">
+      <button onClick="{{ goHome }}" style="border:none;background:none;padding:0;cursor:pointer;height:40px;width:138px;">
+        <img alt="Logo" src="assets/logo.png" style="height:100%;width:100%;object-fit:contain;object-position:left;">
+      </button>
+      <nav style="display:flex;gap:32px;align-items:center;font-size:16px;font-weight:500;">
+        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:16px;font-weight:500;">Home</button>
+        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:16px;font-weight:500;">Hits</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="qs-page-pad" style="width:100%;padding:24px 64px;">
+    <h1 style="font-size:32px;font-weight:700;color:#619b5c;margin:0;">Nuestros hits</h1>
+  </div>
+
+  <div class="qs-page-pad" style="width:100%;padding:24px 64px;display:flex;flex-direction:column;gap:24px;">
+    <div class="qs-filter-row" style="display:flex;align-items:center;gap:16px;">
+      <div style="flex:1;position:relative;">
+        <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+        <input type="text" class="qs-touch" placeholder="Buscar por palabra clave" value="{{ search }}" onInput="{{ onSearch }}" style="width:100%;padding:10px 16px 10px 40px;border:1px solid rgba(0,0,0,0.15);border-radius:8px;font-family:inherit;font-size:16px;outline:none;">
+      </div>
+      <button onClick="{{ openPanel }}" class="qs-touch" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#003366;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:500;font-size:16px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+        Filtros
+      </button>
+    </div>
+
+    <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;">
+      <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="5">
+        <button onClick="{{ chip.onClick }}" class="qs-chip" style="{{ chip.style }}">{{ chip.label }}</button>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ hasActiveFilters }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <span style="font-size:14px;font-weight:500;color:#4b5563;">{{ resultLabel }}</span>
+      <div style="height:16px;width:1px;background:#d1d5db;"></div>
+      <sc-for list="{{ activeFilters }}" as="f" hint-placeholder-count="2">
+        <button onClick="{{ f.onRemove }}" style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:999px;background:#619b5c;color:#fff;font-size:14px;font-weight:500;border:none;cursor:pointer;font-family:inherit;">{{ f.label }}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </sc-for>
+      <button onClick="{{ clearFilters }}" style="font-size:14px;color:#4b5563;font-weight:500;text-decoration:underline;background:none;border:none;cursor:pointer;font-family:inherit;">Limpiar filtros</button>
+    </div>
+    </sc-if>
+  </div>
+
+  <div class="qs-page-pad" style="width:100%;padding:24px 64px;">
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="width:100%;text-align:center;padding:64px 0;">
+        <p style="font-size:20px;color:#6b7280;">No se encontraron casos con los filtros seleccionados</p>
+      </div>
+    </sc-if>
+    <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:stretch;justify-content:center;">
+      <sc-for list="{{ cases }}" as="caso" hint-placeholder-count="6">
+        <article onClick="{{ caso.onOpen }}" class="qs-case-card" style="background:#fff;border:1px solid rgba(0,0,0,0.1);border-radius:16px;width:362.667px;cursor:pointer;box-shadow:0px 4px 8px 0px rgba(0,0,0,0.02),0px 6px 12px 0px rgba(0,0,0,0.03);overflow:hidden;display:flex;flex-direction:column;">
+          <div style="height:240px;width:100%;position:relative;">
+            <sc-if value="{{ caso.hasCoverImage }}" hint-placeholder-val="{{ false }}">
+              <img alt="" ref="{{ caso.coverImageRef }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;padding:24px;flex:1;">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <sc-for list="{{ caso.tags }}" as="tag" hint-placeholder-count="2">
+                  <span style="background:rgba(139,197,63,0.1);padding:6px 8px;border-radius:4px;color:#619b5c;font-size:14px;font-weight:500;">{{ tag }}</span>
+                </sc-for>
+              </div>
+              <h5 style="font-weight:600;font-size:24px;color:#000;margin:0;">{{ caso.titulo }}</h5>
+              <p style="font-weight:500;line-height:1.5;min-height:calc(1.5em * 4);font-size:18px;color:rgba(0,0,0,0.55);margin:0;">{{ caso.descripcion }}</p>
+            </div>
+            <p style="font-weight:500;font-size:18px;color:#000;letter-spacing:-0.09px;margin:0;margin-top:auto;">Ver más →</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- Filter Panel -->
+  <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePanel }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.2);z-index:40;"></div>
+    <div class="qs-filter-panel" style="position:fixed;right:0;top:0;height:100%;width:400px;background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,0.15);z-index:50;overflow-y:auto;">
+      <div style="position:sticky;top:0;background:#fff;border-bottom:1px solid rgba(0,0,0,0.1);padding:24px;display:flex;align-items:center;justify-content:space-between;">
+        <h3 style="font-size:20px;font-weight:600;color:#003366;margin:0;">Filtros avanzados</h3>
+        <button onClick="{{ closePanel }}" style="padding:8px;background:none;border:none;border-radius:999px;cursor:pointer;display:flex;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div style="padding:24px 24px 0;">
+        <div style="display:flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,0.15);border-radius:8px;padding:8px 12px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+          <input value="{{ panelSearch }}" onChange="{{ onPanelSearch }}" placeholder="Buscar filtro..." style="border:none;outline:none;font-size:14px;flex:1;font-family:inherit;color:#374151;" />
+        </div>
+      </div>
+      <div style="padding:24px;display:flex;flex-direction:column;gap:32px;">
+        <sc-for list="{{ filterSections }}" as="section" hint-placeholder-count="5">
+          <div>
+            <h4 style="font-size:14px;font-weight:600;color:#003366;margin:0 0 12px;">{{ section.title }}</h4>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ section.opts }}" as="opt" hint-placeholder-count="3">
+                <label onClick="{{ opt.onToggle }}" class="qs-filter-option" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+                  <span style="{{ opt.boxStyle }}">
+                    <sc-if value="{{ opt.checked }}" hint-placeholder-val="{{ false }}">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+                    </sc-if>
+                  </span>
+                  <span style="font-size:14px;color:#374151;">{{ opt.label }}</span>
+                </label>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ============ DETAIL ============ -->
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;min-height:100vh;">
+  <header style="width:100%;border-bottom:1px solid rgba(0,0,0,0.1);">
+    <div class="qs-header" style="display:flex;align-items:center;justify-content:space-between;padding:24px 64px;">
+      <button onClick="{{ goHome }}" style="border:none;background:none;padding:0;cursor:pointer;height:40px;width:138px;">
+        <img alt="Logo" src="assets/logo.png" style="height:100%;width:100%;object-fit:contain;object-position:left;">
+      </button>
+      <nav style="display:flex;gap:32px;align-items:center;font-size:16px;font-weight:500;">
+        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:16px;font-weight:500;">Home</button>
+        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:16px;font-weight:500;">Hits</button>
+      </nav>
+    </div>
+  </header>
+
+  <div style="width:100%;border-bottom:1px solid rgba(0,0,0,0.1);">
+    <div style="padding:16px 64px;">
+      <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;font-family:inherit;font-weight:500;font-size:18px;color:rgba(0,0,0,0.55);letter-spacing:-0.09px;">← Volver a Hits</button>
+    </div>
+  </div>
+
+  <section style="flex:1 0 0;width:100%;background:#fff;">
+    <div class="qs-detail-pad" style="display:flex;flex-direction:column;gap:24px;padding:32px 64px;max-width:1440px;margin:0 auto;width:100%;">
+      <h1 style="font-weight:700;font-size:36px;color:#000;letter-spacing:-0.72px;line-height:1.2;margin:0;">{{ detailTitulo }}</h1>
+
+      <!-- meta row -->
+      <div style="background:#fbfbfb;border:1px solid rgba(0,51,102,0.1);display:flex;justify-content:flex-start;gap:32px;flex-wrap:wrap;padding:16px 24px;border-radius:8px;width:100%;">
+        <div style="display:flex;flex-direction:column;gap:8px;width:auto;">
+          <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;white-space:nowrap;">Rubro:</h4>
+          <p style="font-size:16px;color:rgba(0,0,0,0.55);margin:0;white-space:nowrap;">{{ detailIndustria }}</p>
+        </div>
+        <sc-if value="{{ detailHasArea }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;width:auto;">
+          <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;white-space:nowrap;">Área:</h4>
+          <p style="font-size:16px;color:rgba(0,0,0,0.55);margin:0;white-space:nowrap;">{{ detailArea }}</p>
+        </div>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:8px;width:auto;">
+          <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;white-space:nowrap;">Categoria:</h4>
+          <p style="font-size:16px;color:rgba(0,0,0,0.55);margin:0;white-space:nowrap;">{{ detailCategoria }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;width:auto;">
+          <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;white-space:nowrap;">País:</h4>
+          <p style="font-size:16px;color:rgba(0,0,0,0.55);margin:0;white-space:nowrap;">{{ detailPais }}</p>
+        </div>
+        <sc-if value="{{ detailHasFuenteDatos }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;width:auto;">
+          <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;">Fuente de Datos:</h4>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <sc-for list="{{ detailFuenteDatos }}" as="tech" hint-placeholder-count="3">
+              <span style="background:rgba(0,51,102,0.08);color:#003366;font-size:13px;font-weight:500;padding:4px 10px;border-radius:999px;">{{ tech }}</span>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:8px;width:auto;">
+          <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;">Tecnologías Utilizadas:</h4>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <sc-for list="{{ detailTecnologiasUtilizadas }}" as="tech" hint-placeholder-count="3">
+              <span style="background:rgba(0,51,102,0.08);color:#003366;font-size:13px;font-weight:500;padding:4px 10px;border-radius:999px;">{{ tech }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <!-- descripcion larga -->
+      <div style="background:#fbfbfb;border:1px solid rgba(0,51,102,0.1);border-radius:8px;padding:24px;width:100%;display:flex;flex-direction:column;gap:8px;">
+        <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;">DESCRIPCIÓN</h4>
+        <sc-if value="{{ detailHasDescripcion }}" hint-placeholder-val="{{ true }}">
+          <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.65);margin:0;line-height:1.6;">{{ detailDescripcionLarga }}</p>
+        </sc-if>
+        <sc-if value="{{ detailNoDescripcion }}" hint-placeholder-val="{{ false }}">
+          <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.35);margin:0;line-height:1.6;font-style:italic;">Detalle en desarrollo.</p>
+        </sc-if>
+      </div>
+
+      <!-- problema + solucion -->
+      <div class="qs-ps-grid" style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch;gap:16px;width:100%;">
+        <div style="background:#fbfbfb;border:1px solid rgba(0,51,102,0.1);border-radius:8px;padding:24px 24px 32px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="background:rgba(255,17,62,0.1);display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF113E"><path d="M12 2L2 22h20L12 2zm0 4l7 14H5L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"></path></svg>
+            </div>
+            <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;">CHALLENGE</h4>
+            <h4 style="font-weight:700;font-size:20px;color:#000;margin:0;letter-spacing:-0.4px;">{{ detailProblemaTitle }}</h4>
+          </div>
+          <sc-if value="{{ detailHasProblema }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;">
+              <sc-for list="{{ detailProblemaItems }}" as="item" hint-placeholder-count="4">
+                <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.55);margin:0 0 8px 0;line-height:1.5;">→ <span style="font-weight:700;color:#000;">{{ item.bold }}</span>{{ item.rest }}</p>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ detailNoProblema }}" hint-placeholder-val="{{ false }}">
+            <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.35);margin:0;line-height:1.5;font-style:italic;">Detalle en desarrollo.</p>
+          </sc-if>
+        </div>
+        <div style="background:#fbfbfb;border:1px solid rgba(0,51,102,0.1);border-radius:8px;padding:24px 24px 32px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="background:rgba(50,135,207,0.1);display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#3287CF"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"></path></svg>
+            </div>
+            <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;">SOLUCIÓN</h4>
+            <h4 style="font-weight:700;font-size:20px;color:#000;margin:0;letter-spacing:-0.4px;">{{ detailSolucionTitle }}</h4>
+          </div>
+          <sc-if value="{{ detailHasSolucion }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;">
+              <sc-for list="{{ detailSolucionItems }}" as="item" hint-placeholder-count="4">
+                <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.55);margin:0 0 8px 0;line-height:1.5;">→ <span style="font-weight:700;color:#000;">{{ item.bold }}</span>{{ item.rest }}</p>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ detailNoSolucion }}" hint-placeholder-val="{{ false }}">
+            <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.35);margin:0;line-height:1.5;font-style:italic;">Detalle en desarrollo.</p>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- impacto -->
+      <div style="background:#fbfbfb;border:1px solid rgba(0,51,102,0.1);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:8px;width:100%;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="background:rgba(125,199,8,0.1);display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#7DC708"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"></path></svg>
+          </div>
+          <h4 style="font-weight:500;font-size:15px;color:#000;margin:0;letter-spacing:-0.3px;">IMPACTO Y VALOR</h4>
+        </div>
+        <sc-if value="{{ detailHasImpacto }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <sc-if value="{{ detailHasImpactoKpis }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <sc-for list="{{ detailImpactoKpis }}" as="kpi" hint-placeholder-count="3">
+                  <div style="flex:1 1 160px;min-width:140px;background:#003366;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:4px;">
+                    <p style="margin:0;font-weight:700;font-size:32px;color:#8BC53F;line-height:1.15;">{{ kpi.value }}</p>
+                    <sc-if value="{{ kpi.hasLabel }}" hint-placeholder-val="{{ true }}">
+                      <p style="margin:0;font-weight:500;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.4;">{{ kpi.label }}</p>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ detailHasImpactoRows }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;">
+                <div class="qs-impacto-header" style="display:grid;grid-template-columns:1fr 40px 1fr;gap:16px;align-items:center;padding-bottom:8px;">
+                  <p style="margin:0;font-weight:700;font-size:12px;letter-spacing:0.6px;color:rgba(0,0,0,0.4);text-transform:uppercase;">Antes</p>
+                  <span></span>
+                  <p style="margin:0;font-weight:700;font-size:12px;letter-spacing:0.6px;color:#5ea300;text-transform:uppercase;">Después</p>
+                </div>
+                <sc-for list="{{ detailImpactoRows }}" as="row" hint-placeholder-count="4">
+                <div class="qs-impacto-row" style="display:grid;grid-template-columns:1fr 40px 1fr;gap:16px;align-items:center;padding:14px 0;border-top:1px solid rgba(0,51,102,0.08);">
+                  <p style="margin:0;font-weight:500;font-size:15px;color:rgba(0,0,0,0.55);line-height:1.45;">{{ row.antes }}</p>
+                  <div style="width:32px;height:32px;border-radius:50%;background:rgba(125,199,8,0.1);display:flex;align-items:center;justify-content:center;flex:0 0 32px;">
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="#7DC708" stroke-linecap="round" stroke-width="1.7"></path></svg>
+                  </div>
+                  <p style="margin:0;font-weight:600;font-size:15px;color:#000;line-height:1.45;">{{ row.despues }}</p>
+                </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ detailHasImpactoSummary }}" hint-placeholder-val="{{ true }}">
+              <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.65);margin:0;line-height:1.6;">{{ detailImpactoSummary }}</p>
+            </sc-if>
+          </div>
+        </sc-if>
+        <sc-if value="{{ detailNoImpacto }}" hint-placeholder-val="{{ false }}">
+          <p style="font-weight:500;font-size:16px;color:rgba(0,0,0,0.35);margin:0;line-height:1.5;font-style:italic;">Detalle en desarrollo.</p>
+        </sc-if>
+      </div>
+
+      <!-- imagenes -->
+      <div>
+        <div class="qs-carousel" onTouchStart="{{ carouselTouchStart }}" onTouchEnd="{{ carouselTouchEnd }}" style="width:100%;border-radius:16px;position:relative;overflow:hidden;background:#000;aspect-ratio:16/8;touch-action:pan-y;">
+          <sc-if value="{{ detailHasImagenes }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ detailMediaIsVideo }}" hint-placeholder-val="{{ false }}">
+              <video ref="{{ detailMediaRef }}" autoplay="" loop="" muted="" playsInline="" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:16px;background:#000;object-fit:contain;"></video>
+            </sc-if>
+            <sc-if value="{{ detailMediaIsImage }}" hint-placeholder-val="{{ true }}">
+              <img alt="" ref="{{ detailMediaRef }}" onClick="{{ detailImageOnClick }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:16px;cursor:pointer;">
+            </sc-if>
+            <sc-if value="{{ detailShowMediaNav }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ detailPrevMedia }}" class="qs-carousel-arrow" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;z-index:2;">‹</button>
+              <button onClick="{{ detailNextMedia }}" class="qs-carousel-arrow" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;z-index:2;">›</button>
+              <div style="position:absolute;bottom:16px;left:0;width:100%;display:flex;justify-content:center;gap:8px;z-index:2;">
+                <sc-for list="{{ detailMediaDots }}" as="dot" hint-placeholder-count="3">
+                  <button onClick="{{ dot.onClick }}" style="{{ dot.style }}"></button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </sc-if>
+          <sc-if value="{{ detailNoImagenes }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#fbfbfb;">
+              <p style="color:rgba(0,0,0,0.35);font-size:16px;font-weight:500;font-style:italic;margin:0;">Detalle en desarrollo.</p>
+            </div>
+          </sc-if>
+        </div>
+        <sc-if value="{{ detailMediaHasCaption }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:8px 0 0 0;font-size:13px;color:rgba(0,0,0,0.5);font-weight:500;text-align:center;">{{ detailMediaCaption }}</p>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ overlayClick }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:100;display:flex;align-items:center;justify-content:center;">
+    <button onClick="{{ closeLightboxClick }}" style="position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:102;">✕</button>
+    <sc-if value="{{ lightboxShowNav }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ lightboxPrevClick }}" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:102;">‹</button>
+      <button onClick="{{ lightboxNextClick }}" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:102;">›</button>
+    </sc-if>
+    <sc-if value="{{ lightboxHasUrl }}" hint-placeholder-val="{{ false }}">
+      <img alt="" ref="{{ lightboxImgRef }}" onClick="{{ stopClickPropagation }}" style="max-width:90vw;max-height:90vh;object-fit:contain;position:relative;z-index:101;">
+    </sc-if>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CASOS_URL = './casos.json';
+const CASOS_FALLBACK = [
+  {id:1,titulo:'Modernización de procesos',descripcion:'Plataforma de automatización con IA y modernización de procesos en cobranzas, proveedores y conciliaciones.',descripcionLargaDetalle:'El objetivo principal de esta iniciativa para la organización es modernizar y automatizar los procesos operativos de soporte administrativo (finanzas, tesorería, cuentas por pagar y cobrar) para liberar tiempo de tareas repetitivas, disminuir errores operativos y robustecer la estructura interna de la empresa frente a su crecimiento acelerado.',tags:['Automatización','IA'],categoria:'Data IA',industria:'Retail',area:'Finanzas',objetivoNegocio:['Automatización / Optimización de procesos'],tipoSolucion:'Aplicación Web',duracionProyecto:'3-6 meses',tipoCliente:'PyME',badges:['Alto Impacto'],tecnologia:['Python (FastAPI)','Pandas','Docker','React','PostgreSQL','Gemini API','OpenRouter API'],año:'2026',pais:'Argentina',media:'img:assets/case-img1.png::Bandeja de cobranzas: estado de cada cobro pendiente de validación | img:assets/case-img2.png::El sistema bloquea un cobro por baja calidad de imagen del cheque y pide una nueva foto | vid:assets/case-vid.mp4::Recorrido del flujo de validación de cobros en el portal',problemaTitle:'Ineficiencias en cuatro frentes operativos',problemaItems:'Cobranzas: Emplea a 5 personas a tiempo completo (full-time), y el tiempo de procesamiento de los correos y PDF entrantes toma días o semanas. | Proveedores: Involucra a 2.5 personas a tiempo completo para procesar unas 1,400 facturas al mes, lo que demora entre 2 y 5 días por lote. | Conciliación Interna: Es ejecutada por el equipo contable (horas dedicadas) sobre 50 cuentas y 4 entidades legales, requiriendo entre 3 y 5 días por cada cierre. | Conciliación Bancaria: También a cargo del equipo contable para 77 cuentas bancarias de 17 bancos distintos, demandando entre 5 y 10 días por cada cierre.',solucionTitle:'Portal de validación Inteligente y automatización financiera.',solucionItems:'Fin del "punteo" visual, el trabajo manual de revisar celda por celda desaparece, transformando procesos de varios días en una rápida validación a través de un portal web | Procesamiento de cobros inmediato, la IA extrae la información de los correos al instante. El usuario aprueba automáticamente los casos exitosos (verdes) y solo dedica tiempo a resolver bloqueos o excepciones (casos amarillos o rojos) | Conciliaciones en un par de clics, un motor agrupa automáticamente los movimientos contables y bancarios (coincidencia exacta, tolerada o combinatoria) el equipo solo realiza una validación visual rápida de los pares sugeridos y resuelve los desvíos puntuales desde la interfaz.',cronogramaTitle:'CRONOGRAMA DE TRABAJO',cronogramaMedia:'img:assets/cronograma.png',impactoKpis:'85%: conciliaciones automáticas | 2 h: cierre de conciliación (antes 10 días) | Inmediato: pedidos y cobros (antes 8 días) | 95%: del flujo operativo automatizado',impactoAntes:'Gestión de pedidos y cobros 8 días. | Conciliación de cuentas 10 días. | Revisión de todos los pedidos y cobros. | 100% de conciliaciones manuales.',impactoDespues:'Gestión de pedidos y cobros inmediato | Conciliación de cuentas 2 horas | Menos el 15% requeren revisión. | 85% de conciliaciones son automáticas.',impactoSummary:'La automatización reducirá los tiempos de procesamiento y cierre contable de varios días a una disponibilidad casi inmediata, resolviendo de forma automática el 95% del flujo operativo. Como resultado, los equipos dejarán atrás la carga manual masiva para enfocarse exclusivamente en la validación y resolución de excepciones (casos amarillos y rojos) mediante un portal web con un par de clics, preparando a la estructura administrativa para soportar el acelerado crecimiento del negocio.',fuenteDatos:['PostgreSQL'],tecnologiasUtilizadas:['Python (FastAPI)','Pandas','Docker','React','Gemini API','OpenRouter API']},
+  {id:2,titulo:'Modelo predictivo de ausentismo',descripcion:'Predicción semanal del riesgo de ausentismo por colaborador para anticipar y reducir su impacto operativo y de costos.',descripcionLargaDetalle:'El modelo de predicción de ausentismo semanal es una solución de machine learning que estima cada lunes la probabilidad de que un empleado de los centros de distribución (Shipping) se ausente durante la semana siguiente. El modelo automatiza una decisión que hoy depende del juicio manual de líderes y de heurísticas simples, y la escala a más de 60.000 colaboradores de forma consistente y reproducible.',tags:['IA'],categoria:'Data IA',industria:'E-commerce',area:'Logística',objetivoNegocio:['Habilitar intervenciones preventivas antes de que la ausencia ocurra.'],tipoSolucion:'Sistema predictivo',duracionProyecto:'>6 meses',tipoCliente:'Enterprise',badges:['Alto Impacto'],tecnologia:['Python','SQL','XGBoost 2.x','scikit-learn','category encoders','SHAP','Big Query','Parquet','pandas/pyarrow','VSCode','Jupyter','Poetry','Tableau'],año:'2025, 2026',pais:'Argentina',media:'img:assets/case2-img2.png::Dashboard principal: distribución de la dotación por nivel de riesgo y ranking de sites y líderes más críticos | img:assets/case2-img4.png::Detalle de empleados con score de riesgo individual para la semana de predicción | img:assets/case2-img5.png::Vista de un caso puntual, con el score de riesgo y la acción recomendada para el líder',problemaTitle:'Ausentismo no planificado como uno de los principales factores de fricción operativa.',problemaItems:'No escala: es inviable sostener un juicio manual consistente sobre una dotación de más de 60.000 personas. | Es reactivo por diseño: la organización se entera de la ausencia el mismo día, cuando ya no hay margen para prevenir, solo para cubrir. | Es inconsistente: el criterio varía de líder a líder, generando decisiones dispares ante situaciones similares (y perdiendo la oportunidad de detectar señales tempranas de empleados en riesgo, antes de que el ausentismo se convierta en un patrón).',solucionTitle:'Diseño e implementación de un modelo predictivo de machine learning y un dashboard operativo integrado.',solucionItems:'De reactivo a proactivo: los líderes pasan de "cubrir la ausencia el mismo día" a sostener una conversación preventiva con el empleado antes de que la falta suceda, abriendo espacio para detectar y resolver causas subyacentes (salud, carga laboral, motivación, factores personales). | De intuición a consistencia: la decisión de a quién priorizar para una intervención deja de depender del criterio individual de cada líder y pasa a basarse en un score probabilístico, reproducible y aplicado por igual a los más de 60.000 empleados de la operación. | De costo hundido a planificación: al anticipar la disponibilidad real de personal por turno y proceso, el modelo habilita una mejor planificación de dotación, reduciendo la necesidad de horas extra y contratación de emergencia.',cronogramaTitle:'CRONOGRAMA DE TRABAJO',impactoKpis:'7 días: de anticipación (antes 0) | 100%: de la dotación con scoring (+60.000) | 15-20%: menos ausentismo no planificado | +30: intervenciones preventivas/mes',impactoAntes:'Detección de riesgo de ausentismo 0 días de anticipación. | Cobertura de seguimiento manual sobre ~5% de la dotación (solo casos "visibles" para el líder). | ~10% de tasa de ausentismo semanal sin intervención previa. | 0 acciones preventivas formales registradas por semana.',impactoDespues:'Predicción con 7 días de anticipación, cada lunes, sobre la semana siguiente. | Scoring de riesgo aplicado al 100% de la dotación (+60.000 colaboradores) de forma automática. | Reducción estimada del 15-20% en ausentismo no planificado en los grupos de riesgo alto/muy alto tras la intervención preventiva. | +30 intervenciones preventivas mensuales (encuestas/conversaciones) sobre perfiles identificados como de riesgo.',impactoSummary:'El modelo transformó la gestión del ausentismo en los centros de distribución de esta multinacional, pasando de un esquema reactivo (cubrir la falta el mismo día) a uno preventivo (intervenir antes de que ocurra), con cobertura sobre más de 60.000 empleados.',fuenteDatos:['SQL','Big Query','Parquet'],tecnologiasUtilizadas:['Python','XGBoost 2.x','scikit-learn','category encoders','SHAP','Pandas','VS Code','Jupyter','Poetry','Tableau']},
+  {id:3,titulo:'Analítica de datos industriales aplicada a plantas de biomasa',descripcion:'Análisis de datos operativos de central térmica para determinar la combinación óptima de humedad y proporción de chips de biomasa que maximiza generación, potencia vendida y estabilidad de llama.',descripcionLargaDetalle:'Análisis de +3.500 horas de datos operativos reales de la central. El estudio comparó combinaciones de humedad de biomasa y proporción de chips mediante partición por terciles y validación estadística, identificando que la combinación "Humedad Baja + Chips Bajos" domina simultáneamente en generación bruta, potencia vendida y estabilidad de llama. Como parte del trabajo se generaron informes de detección de anomalías, se refinaron las curvas teóricas de la planta y se elaboraron propuesta de sistema de recomendación en tiempo real para el operador de caldera.',tags:['IA','Ciencia de datos'],categoria:'Data IA',industria:'Energía',area:'Operaciones',objetivoNegocio:['Reducir el sobreconsumo de biomasa y maximizar la generación y potencia vendida mediante la identificación de la combinación óptima de operación','sentando además las bases (calidad de datos','curvas reales) para una futura recomendación de compra de biomasa con base económica.'],tipoSolucion:'Sistema predictivo',duracionProyecto:'3–6 meses',tipoCliente:'Enterprise',badges:['Alto Impacto'],tecnologia:['Python','Visual Studio Code','IA generativa','Spec Driven Development','ANOVA'],año:'2025, 2026',pais:'Argentina',media:'img:assets/case3-img1.png::Mapa de calor que cruza caudal de vapor y aire secundario, mostrando en qué combinaciones se alcanza el mejor rango de potencia vendida | img:assets/case3-img2.png::Serie temporal de presión de vapor de caldera, con los valores atípicos (mayores a 70) resaltados para su revisión | img:assets/case3-img3.png::Detección de un período anormal en la relación entre proporción de chips y generación (MW), marcado para revisión del equipo técnico | img:assets/case3-img4.png::Importancia de variables del modelo (SHAP): qué factores influyen más en el rendimiento de la caldera | img:assets/case3-img5.png::Comparación de rendimiento por combinación de humedad y proporción de chips, segmentada por nivel de oxígeno | img:assets/case3-img6.png::Relación entre cada variable operativa y su impacto en el modelo (gráficos de dependencia SHAP)',problemaTitle:'Variabilidad de biomasa genera inestabilidad y sobreconsumo energético.',problemaItems:'La variabilidad en la humedad y composición (proporción de chips) de la biomasa utilizada en la caldera generaba inestabilidad en la generación eléctrica, sin que existiera una forma sistemática de identificar qué combinación operativa era más eficiente. Además, el cliente contaba con curvas teóricas de referencia demasiado genéricas (líneas rectas de 45°) que no reflejaban el comportamiento real de la planta, y con datos operativos que incluían errores de sensores (por ejemplo, lecturas de oxígeno en cero) sin un proceso claro de detección. A esto se sumaba la dificultad de medir el impacto real de mejoras previas por falta de un punto de comparación serio y por "efectos confundidos".',solucionTitle:'Modelo de análisis comparativo de combinaciones humedad–chips basado en datos históricos reales.',solucionItems:'Se construyó un pipeline de limpieza y validación de datos. | Se aplicó una partición por terciles para comparar grupos de operación de forma balanceada. | Se validó estadísticamente la diferencia entre combinaciones mediante ANOVA y pruebas post-hoc. | Se generaron matrices de rendimiento energético bruto, potencia vendida y estabilidad operativa. | Hallazgo específico sobre sobreconsumo de biomasa. | Implementación de nformes de anomalías para que el equipo técnico corrija problemas de datos y el cliente identifique necesidad de reemplazo de sensores o alertas dinámicas. | Refinamiento de curvas teóricas de la planta con datos reales.',cronogramaTitle:'CRONOGRAMA DE TRABAJO',cronogramaMedia:'img:assets/case3-cronograma.png',impactoKpis:'+2.6 MW: generación bruta adicional | -17.7%: consumo de biomasa | <2%: registros con error (antes ~12%) | <8%: desvío de curvas (antes ~30%)',impactoAntes:'Generación promedio de ~14.8 MW en condición subóptima. | Consumo de biomasa de ~57.6 Ton/h para sostener la operación. | ~12% de los registros de sensores con lecturas erróneas o inconsistentes sin detección sistemática (ej. sensor de oxígeno en cero) | Curvas teóricas genéricas (líneas de 45°) con un desvío estimado de ~30% respecto a la operación real.',impactoDespues:'~17.4 MW en la combinación óptima (+2.6 MW brutos), equivalente a ~$1.2M USD/año adicionales estimados a un precio de referencia de 60 USD/MWh. (cifra de precio y total anual simulados). | ~47.4 Ton/h en la combinación óptima (-10.2 Ton/h, -17.7%), un ahorro estimado de ~$210 mil USD/año asumiendo un costo promedio de 35 USD/Ton. (costo por tonelada simulado). | <2% de registros con error tras la implementación de informes de anomalías, habilitando reemplazo proactivo de equipos. (porcentajes simulados) | cCrvas adaptativas basadas en datos históricos con un desvío estimado de <8%, mejorando la precisión de referencia operativa.',impactoSummary:'El proyecto convirtió +3.500 horas de datos operativos dispersos en una recomendación operativa clara, cuantificada y accionable, dejando además las bases (calidad de datos, curvas reales) para una futura fase de recomendación de compra de biomasa con retorno económico.',fuenteDatos:[],tecnologiasUtilizadas:['Python','VS Code','IA generativa','Spec Driven Development','ANOVA']},
+  {id:4,titulo:'Agente Comercial',descripcion:'Asistente de IA conversacional que unifica datos comerciales, logísticos y de CRM para dar respuestas rápidas al equipo comercial y técnico en terreno.',descripcionLargaDetalle:'Negocio comercial amplio, con múltiples canales de venta (directos e indirectos), plataformas propias, un CRM (Creatio) y sistemas transaccionales (SAP) que no siempre están integrados entre sí. A partir del relevamiento de necesidades del equipo comercial, técnico y de administración comercial, se desarrolló un asistente de IA que consolida esta información dispersa y la pone a disposición del usuario final (técnicos, promotores, administración comercial) en lenguaje natural, evitando que cada equipo tenga que cruzar manualmente reportes de distintas fuentes (SAP, CRM, plataformas de canal) para responder preguntas operativas del día a día. El caso informe ejecutivo 2026 ejemplifica el tipo de análisis que el asistente busca automatizar: comparación de ventas y unidades vs. año anterior, identificación de familias de producto en caída o crecimiento, detección de productos que desaparecieron del mix, seguimiento de programas comerciales y cumplimiento de plan.',tags:['IA','Agente'],categoria:'Data IA',industria:'Laboratorio',area:'Comercial',objetivoNegocio:['Dar visibilidad unificada y en tiempo real del negocio comercial (multicanal','multi-cuenta','multi-familia de producto) para que el equipo comercial y técnico tome decisiones más rápidas en terreno','mejore el cumplimiento de objetivos y detecte desvíos (de precio','de despacho','de mix de producto) sin depender de reportes manuales cruzados entre sistemas.'],tipoSolucion:'Asistente de IA',duracionProyecto:'< 3 meses',tipoCliente:'Enterprise',badges:['Alto Impacto','IA'],tecnologia:['Python','Azure','SQL','CRM','Salesforce','Gemini','Claude','GPT'],año:'2026',pais:'Argentina',media:'img:assets/case4-img1.png::Pantalla principal del asistente, conectado a SAP, Creatio CRM y el portal de canal | img:assets/case4-img2.png::Informe ejecutivo de ventas 2026 vs. 2025 generado por el asistente en lenguaje natural | img:assets/case4-img3.png::Consulta de disponibilidad de stock por depósito, cruzando datos de SAP y logística | vid:assets/case4-vid.mp4::Demo en vivo del asistente respondiendo consultas comerciales en lenguaje natural',problemaTitle:'Información comercial dispersa entre canales, sistemas y equipos.',problemaItems:'Ventas directas e indirectas distribuidas en múltiples canales sin una estructura unificada. | Una misma entidad puede tener distintos roles según el canal, sin un maestro único de clientes. | El estado de despacho, métrica crítica para el negocio, no está disponible de forma nativa en SAP. | Las frecuencias de entrega del operador logístico no están modeladas a nivel de código postal/localidad. | Administración Comercial no cuenta con una forma ágil de auditar desvíos de precios ni detectar ventas por debajo del piso establecido. | No hay un proceso claro para conciliar notas de crédito por cliente facturador o distribuidor. | Técnicos y promotores en terreno necesitan consultar rápidamente historial de interacciones (CRM), inventario de material promocional y proyección de cumplimiento de objetivos, pero esta información está fragmentada entre sistemas.',solucionTitle:'Asistente de IA multicanal para el equipo comercial y técnico.',solucionItems:'Consolidación de ventas directas e indirectas de todas las plataformas en una estructura única. | Maestro único de cliente mediante árbol jerárquico (Firma, Razón Social, CUIT, Establecimiento) apalancado en el CRM, resolviendo el problema de múltiples roles por cuenta. | Consulta ágil de proyección de cumplimiento de objetivos trimestrales para técnicos en terreno. | Acceso a inventario y despacho de material promocional directamente desde el asistente. | Acceso al historial de interacciones registrado (última visita, minutas, compromisos asumidos). | Visibilidad del estado de despacho, no disponible nativamente en SAP. | Modelo de frecuencias de entrega a operador logístico a nivel de código postal/localidad. | Auditoría de precios: detección de desvíos vs. lista vigente y ventas por debajo del piso establecido. | Generación de dashboards ejecutivos con KPIs de ventas, unidades, variaciones por familia de producto y cumplimiento de plan.',cronogramaTitle:'CRONOGRAMA DE TRABAJO',cronogramaMedia:'img:assets/case4-cronograma.png',impactoKpis:'15-45 s: respuesta (antes cruces de meses) | 100%: fuerza comercial homologada | 5 min: refresco del Data Warehouse',impactoAntes:'50 usuarios comerciales obligados a acceder a múltiples plataformas dispersas (CRM Creatio, SAP, Salesforce) o reportes estáticos para consultar KPIs y objetivos trimestrales. | 22 descargas de datos manuales y múltiples planillas Excel. | Actualizaciones y cruces de información transaccional que tardaban meses.',impactoDespues:'Acceso unificado en ruta mediante consultas dinámicas y audios por WhatsApp, con salidas automatizadas y gestión de latencia controlada entre 15 y 45 segundos. | Homologación del 100% de la fuerza comercial bajo un "Super Maestro" de entidades unificado. | Implementación de un esquema automatizado de carga del Data Warehouse cada 5 minutos.',impactoSummary:'El impacto apunta a que el equipo comercial y técnico pase de cruzar reportes manualmente entre SAP, CRM y plataformas de canal, a resolver esas mismas preguntas en segundos a través de un asistente conversacional único.',fuenteDatos:['SQL','CRM','Salesforce'],tecnologiasUtilizadas:['Python','Azure','Gemini','Claude','GPT']},
+  {id:5,titulo:'Agente Legal (BF Legal)',descripcion:'Desarrollo e implementación de un agente de contestaciones de demandas civiles basado en inteligencia artificial.',descripcionLargaDetalle:'Este proyecto abarca la implementación y puesta en marcha de un Agente de Contestaciones diseñado para automatizar y optimizar la gestión de demandas en el ámbito civil. El sistema procesa los casos y formula respuestas personalizadas siguiendo las particularidades metodológicas de distintos juzgados y profesionales del derecho.',tags:['IA','Agente'],categoria:'Data IA',industria:'Legal',area:'Demandas',objetivoNegocio:['Generar respuestas automatizadas que se adapten a la lógica específica requerida por cada juzgado y abogado.'],tipoSolucion:'Agente / Asistente de IA',duracionProyecto:'< 3 meses',tipoCliente:'Servicios',badges:['Alto Impacto','Con IA'],fuenteDatos:[],tecnologiasUtilizadas:['Phyton','Nginx'],pais:'Argentina',media:'vid:https://drive.google.com/uc?export=download&id=1PbDPhGOHhTPyhCDuugf7cZZQZo1RS8tO::Recorrido del flujo completo: desde subir la demanda hasta el borrador de contestación generado | img:https://drive.google.com/thumbnail?id=1LA2U9el1Z7vK3X4Pcqdz-VLL92nnEAsT&sz=w2000::Pantalla principal del Agente Legal, con los casos recientes y el área para subir la demanda en PDF | img:https://drive.google.com/thumbnail?id=1Vp69OJjEmAi0YUvgcscSeBEjy9s_qbcF&sz=w2000::Borrador de contestación generado, con los datos faltantes de la demanda marcados para completar y las negativas para verificar',problemaTitle:'Cuello de botella operativo',problemaItems:'Diversidad de criterios jurídicos: Cada juzgado y abogado tiene lógicas y metodologías específicas de redacción que el agente de IA debe replicar con precisión. | Resistencia y barrera de adopción: Riesgo de rechazo o frustración de los abogados ante la IA debido a falsas expectativas o dificultades en la interacción con el sistema. | Dependencia de insumos clave: Demoras en la entrega de casos reales y datos históricos necesarios para entrenar y calibrar el modelo a tiempo. | Agendas de especialistas ajustadas: Disponibilidad limitada de los profesionales clave para validar diseños y pruebas dentro del ajustado plazo de 5 semanas. | Desviación del alcance pactado: Presión por incorporar automatizaciones externas (como extracción de datos de sistemas del estudio) no contempladas originalmente.',solucionTitle:'Agente de IA Legal: automatización y adaptación de respuestas.',solucionItems:'Inteligencia Adaptativa: Redacción de contestaciones alineadas a la lógica específica de cada juzgado y abogado, entrenada con ejemplos de casos reales. | Monitoreo y Control: Seguimiento mediante estadísticas de adopción y reportes automáticos de errores para garantizar la consistencia técnica de la IA. | Adopción Garantizada: Ciclo rápido de pruebas con usuarios clave (Key Users) y talleres de capacitación funcional para eliminar la desconfianza del equipo.',impactoKpis:'Menos de 5 min: generación de borrador | 100%: lógicas judiciales homologadas. | Real-time: reporte de consistencia.',impactoAntes:'Redacción manual e individualizada de cada contestación de demanda, consumiendo de 4 a 6 horas de análisis y escritura por caso. | Dispersión metodológica y dificultad para adaptar el escrito a las lógicas específicas requeridas por cada juzgado o abogado patrocinante. | Desconfianza del equipo legal en la IA y falta de visibilidad (caja negra) sobre la tasa de uso o los errores de consistencia en los escritos.',impactoDespues:'Generación automatizada de un borrador preliminar de alta calidad en 3 a 5 minutos, listo para la revisión final del abogado. | Coherencia y consistencia jurídica con lógicas judiciales 100% homologadas, respetando estrictamente las exigencias del juzgado correspondiente. | Panel de control con métricas de adopción y reportes de errores en tiempo real, respaldados por talleres que aseguran una transición fluida.',impactoSummary:'El impacto apunta a que el equipo de abogados pase de analizar y redactar manualmente contestaciones de demandas civiles adaptándose a las lógicas dispersas de cada juzgado, a revisar y perfeccionar borradores jurídicos consistentes en cuestión de minutos a través de un agente de inteligencia artificial entrenado a su medida.'},
+  {id:9,titulo:'Optimización de parques eólicos basada en datos.',descripcion:'Monitoreo inteligente de aerogeneradores: reduciendo pérdidas financieras con datos',descripcionLargaDetalle:'El proyecto busca optimizar un parque eólico mediante el análisis de datos de aerogeneradores para mitigar pérdidas financieras. La herramienta central consiste en un tablero interactivo para visualizar el rendimiento operativo.',tags:['Business Intelligence','Machine Learning'],categoria:'Data Strategy',industria:'Energía',area:'Operaciones',objetivoNegocio:['Reducir las pérdidas financieras por baja eficiencia entre aerogeneradores','cuantificando el impacto real del efecto estela y validando con evidencia propia —antes de comprometer una inversión productiva— el potencial de un sistema de optimización inteligente del parque.'],tipoSolucion:'Dashboard',duracionProyecto:'< 3 meses',tipoCliente:'Enterprise',fuenteDatos:[],tecnologiasUtilizadas:['VS Code','Python','Jupyter Notebook','Streamlit'],pais:'Argentina',media:'img:https://drive.google.com/thumbnail?id=1vucd6MvglEwqUHA6Euxtmk4z4Y_XNV4F&sz=w2000::Simulador del parque: potencia total generada y pérdida por efecto estela según las condiciones de viento | img:https://drive.google.com/thumbnail?id=1Fchn_zkyZ35OD0tKQU3Inct47iFIepC2&sz=w2000::Inspector de estela de un aerogenerador puntual, con la proyección física de su estela y potencia individual',problemaTitle:'Detección de ineficiencias en aerogeneradores.',problemaItems:'Falta de visibilidad: sin un sistema que permitiera medir la eficiencia energética real de cada aerogenerador, las ineficiencias pasaban desapercibidas. | Detección tardía: los bajos rendimientos y fallas operativas no se detectaban a tiempo, generando pérdidas financieras sostenidas. | Impacto en rentabilidad: la falta de visibilidad afectaba la rentabilidad general de la operación del parque.',solucionTitle:'Simulador de eficiencia eólica: cuantificando el efecto estela para justificar la inversión en optimización inteligente',solucionItems:'Prototipo interactivo con simulador de producción energética de los 36 aerogeneradores del parque en función de la velocidad y dirección del viento. | Visualización de potencia individual de cada aerogenerador mediante una escala de color (0 a 1.500 kW). | Estimación de producción global del parque bajo distintos escenarios de viento. | Simulación sobre limitación o apagado de aerogeneradores puntuales para observar el impacto en la producción total del parque.',impactoKpis:'Hasta +12%: más producción en escenarios de alta interferencia por estela | 36: aerogeneradores con recomendaciones individuales de limitación | Hasta USD 180.000/año: de ahorro proyectado con el sistema de optimización',impactoAntes:'El cliente no tenía forma de saber si las pérdidas de producción se debían a condiciones de viento normales o a ineficiencias evitables entre aerogeneradores. | La decisión de comprar un sistema automático de optimización se basaba en promesas de proveedores, sin evidencia propia sobre el potencial real de mejora. | El efecto estela era un concepto conocido en la industria pero no cuantificado ni visualizado para este parque en particular. | No existía un diagnóstico claro sobre qué datos históricos estaban disponibles ni su calidad.',impactoDespues:'Cuenta con una herramienta visual que aísla y cuantifica el impacto del efecto estela sobre la producción global. | Dispone de un prototipo manipulable que le permite explorar distintos escenarios y estimar el retorno esperado antes de invertir. | Puede ver, aerogenerador por aerogenerador, cómo pequeñas limitaciones individuales impactan en la producción total. | Se identificó el estado real de los datos (6 meses, con cortes) y se definió la curación como paso previo indispensable para construir un asistente inteligente confiable.',impactoSummary:'El proyecto le permitió al cliente pasar de una intuición no verificada sobre ineficiencias en su parque eólico a una evidencia cuantificada y visual del potencial de mejora, sin necesidad de comprometer una inversión en un sistema productivo desde el primer momento. El prototipo actuó como una prueba de concepto de bajo riesgo que valida la hipótesis de negocio (el efecto estela representa una oportunidad real de optimización) y sienta las bases técnicas y de datos para una futura implementación de Machine Learning.'}
+];
+
+function uniqueVals(list, key) {
+  const seen = new Map();
+  list.forEach(c => {
+    const v = c[key];
+    if (v === undefined || v === null) return;
+    String(v).split(',').map(s => s.trim()).filter(Boolean).forEach(s => {
+      const k = s.toLowerCase();
+      if (!seen.has(k)) seen.set(k, s);
+    });
+  });
+  return Array.from(seen.values()).sort();
+}
+function uniqueArrVals(list, key) {
+  const seen = new Map();
+  list.forEach(c => (c[key]||[]).forEach(v => {
+    const s = String(v || '').trim();
+    if (!s) return;
+    const k = s.toLowerCase();
+    if (!seen.has(k)) seen.set(k, s);
+  }));
+  return Array.from(seen.values()).sort();
+}
+function normVal(v) { return String(v == null ? '' : v).trim().toLowerCase(); }
+function matchesAny(selected, value) {
+  if (!selected.length) return true;
+  const nv = normVal(value);
+  if (!nv) return false;
+  return selected.some(s => normVal(s) === nv);
+}
+function matchesAnyArr(selected, values) {
+  if (!selected.length) return true;
+  const normSel = selected.map(normVal);
+  return (values || []).some(v => normSel.includes(normVal(v)));
+}
+function splitCommaVals(raw) {
+  if (!raw) return [];
+  return String(raw).split(',').map(s => s.trim()).filter(Boolean);
+}
+function uniqueCombinedTechVals(list) {
+  const seen = new Map();
+  list.forEach(c => {
+    [...splitCommaVals(c.fuenteDatos), ...splitCommaVals(c.tecnologiasUtilizadas)].forEach(s => {
+      const k = s.toLowerCase();
+      if (!seen.has(k)) seen.set(k, s);
+    });
+  });
+  return Array.from(seen.values()).sort();
+}
+function buildSections(list) {
+  return [
+    {title:'Área',key:'area',options:uniqueVals(list, 'area')},
+    {title:'País',key:'pais',options:uniqueVals(list, 'pais')},
+    {title:'Industria',key:'industria',options:uniqueVals(list, 'industria')},
+    {title:'Tecnología',key:'tecnologiaCombinada',options:uniqueCombinedTechVals(list)}
+  ];
+}
+
+const CHIP_BASE = "padding:8px 16px;border-radius:999px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .15s;";
+
+class Component extends DCLogic {
+  state = {
+    page: 'home',
+    detailId: null,
+    categoria: 'Todos',
+    search: '',
+    panelOpen: false,
+    adv: { industria:[], area:[], pais:[], tecnologiaCombinada:[] },
+    panelSearch: '',
+    casos: null, casosLoading: true
+  };
+  onPanelSearch = (e) => this.setState({ panelSearch: e.target.value });
+  componentDidMount_dataFetch = () => {
+    fetch(CASOS_URL, { cache: 'no-store' })
+      .then(res => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+      .then(data => {
+        if (!Array.isArray(data)) throw new Error('invalid shape');
+        this.setState({ casos: data, casosLoading: false });
+      })
+      .catch(err => {
+        console.warn('No se pudo cargar ' + CASOS_URL + ', usando CASOS_FALLBACK.', err);
+        this.setState({ casos: CASOS_FALLBACK, casosLoading: false });
+      });
+  };
+  getCasos = () => this.state.casos || CASOS_FALLBACK;
+
+  goHome = () => this.setState({ page:'home', panelOpen:false });
+  goCasos = () => this.setState({ page:'casos', panelOpen:false });
+  openDetail = (id) => this.setState({ page:'detail', detailId:id, panelOpen:false, mediaIndex:0 });
+  prevMedia = (total) => this.setState(s => ({ mediaIndex: ((s.mediaIndex||0) - 1 + total) % total }));
+  nextMedia = (total) => this.setState(s => ({ mediaIndex: ((s.mediaIndex||0) + 1) % total }));
+  setMedia = (i) => this.setState({ mediaIndex: i });
+
+  getImageList = () => {
+    const casos = this.getCasos();
+    const caso = casos.find(c => c.id === this.state.detailId) || casos[0];
+    let mediaItems;
+    if (caso.media && caso.media.trim()) {
+      mediaItems = caso.media.split('|').map(s => s.trim()).filter(Boolean).map(s => {
+        if (s.startsWith('vid:')) return { type:'vid', url: s.slice(4) };
+        if (s.startsWith('img:')) return { type:'img', url: s.slice(4) };
+        return { type:'img', url: s };
+      });
+    } else if (caso.imagenUrl) {
+      mediaItems = [{ type:'img', url: caso.imagenUrl }];
+    } else {
+      mediaItems = [{ type:'img', url: 'assets/detail1.png' }];
+    }
+    return mediaItems.filter(m => m.type !== 'vid');
+  };
+
+  splitComma = (raw) => {
+    if (!raw) return [];
+    return String(raw).split(',').map(s => s.trim()).filter(Boolean);
+  };
+  parseBulletItems = (raw) => {
+    if (!raw || typeof raw !== 'string' || !raw.trim()) return [];
+    return raw.split('|').map(s => s.trim()).filter(Boolean).map(seg => {
+      const ci = seg.indexOf(':');
+      if (ci > -1) return { bold: seg.slice(0, ci + 1), rest: seg.slice(ci + 1) };
+      return { bold: '', rest: seg };
+    });
+  };
+  getCoverImage = (caso) => {
+    if (caso.media && caso.media.trim()) {
+      const firstImg = caso.media.split('|').map(s => s.trim()).filter(Boolean).find(s => s.startsWith('img:'));
+      if (firstImg) {
+        const raw = firstImg.slice(4);
+        const ci = raw.indexOf('::');
+        return (ci > -1 ? raw.slice(0, ci) : raw).trim();
+      }
+    }
+    if (caso.imagenUrl) return caso.imagenUrl;
+    return 'assets/case.png';
+  };
+  openLightbox = (idx) => { document.body.style.overflow = 'hidden'; this.setState({ lightboxOpen:true, lightboxIndex: idx }); };
+  closeLightbox = () => { document.body.style.overflow = ''; this.setState({ lightboxOpen:false }); };
+  closeLightboxClick = (e) => { e.stopPropagation(); this.closeLightbox(); };
+  overlayClick = (e) => { if (e.target === e.currentTarget) this.closeLightbox(); };
+  prevLightboxImg = (e) => { if (e) e.stopPropagation(); const total = this.getImageList().length; if (total > 1) this.setState(s => ({ lightboxIndex: ((s.lightboxIndex||0) - 1 + total) % total })); };
+  nextLightboxImg = (e) => { if (e) e.stopPropagation(); const total = this.getImageList().length; if (total > 1) this.setState(s => ({ lightboxIndex: ((s.lightboxIndex||0) + 1) % total })); };
+  stopClickPropagation = (e) => e.stopPropagation();
+  touchStartX = 0;
+  carouselTouchStart = (e) => { this.touchStartX = e.touches[0].clientX; };
+  carouselTouchEnd = (e, total) => {
+    const dx = e.changedTouches[0].clientX - this.touchStartX;
+    if (Math.abs(dx) < 40) return;
+    if (dx < 0) this.nextMedia(total); else this.prevMedia(total);
+  };
+
+  handleKeydown = (e) => {
+    if (!this.state.lightboxOpen) return;
+    if (e.key === 'Escape') this.closeLightbox();
+    else if (e.key === 'ArrowLeft') this.prevLightboxImg();
+    else if (e.key === 'ArrowRight') this.nextLightboxImg();
+  };
+  componentDidMount() { window.addEventListener('keydown', this.handleKeydown); this.componentDidMount_dataFetch(); }
+  componentWillUnmount() { window.removeEventListener('keydown', this.handleKeydown); document.body.style.overflow = ''; }
+  setCategoria = (c) => this.setState({ categoria:c });
+  explore = (c) => this.setState({ page:'casos', categoria:c });
+  onSearch = (e) => this.setState({ search: e.target.value });
+  openPanel = () => this.setState({ panelOpen:true });
+  closePanel = () => this.setState({ panelOpen:false });
+
+  toggleAdv = (key, val) => this.setState(s => {
+    const arr = s.adv[key];
+    const next = arr.includes(val) ? arr.filter(v=>v!==val) : [...arr, val];
+    return { adv: { ...s.adv, [key]: next } };
+  });
+
+  removeFilter = (cat, val) => {
+    if (cat === 'categoria') this.setState({ categoria:'Todos' });
+    else if (cat === 'search') this.setState({ search:'' });
+    else this.setState(s => ({ adv: { ...s.adv, [cat]: s.adv[cat].filter(v=>v!==val) } }));
+  };
+
+  clearFilters = () => this.setState({
+    categoria:'Todos', search:'',
+    adv:{ industria:[], area:[], pais:[], tecnologiaCombinada:[] }
+  });
+
+  filtered() {
+    const { categoria, search, adv } = this.state;
+    const q = search.toLowerCase();
+    return this.getCasos().filter(c => {
+      if (categoria !== 'Todos' && c.categoria !== categoria) return false;
+      if (q && !c.titulo.toLowerCase().includes(q) && !c.descripcion.toLowerCase().includes(q) && !c.tags.some(t=>t.toLowerCase().includes(q))) return false;
+      if (!matchesAny(adv.industria, c.industria)) return false;
+      if (!matchesAny(adv.area, c.area)) return false;
+      if (!matchesAny(adv.pais, c.pais)) return false;
+      if (!matchesAnyArr(adv.tecnologiaCombinada, [...splitCommaVals(c.fuenteDatos), ...splitCommaVals(c.tecnologiasUtilizadas)])) return false;
+      return true;
+    });
+  }
+
+  renderVals() {
+    const { page, categoria, search, adv, panelOpen, detailId } = this.state;
+    const cats = ['Todos','Data Strategy','Data Viz','Data Fabric','Data IA'];
+
+    const chips = cats.map(c => ({
+      label: c,
+      onClick: () => this.setCategoria(c),
+      style: c === categoria
+        ? CHIP_BASE + "background:#619b5c;color:#fff;border:1px solid transparent;"
+        : CHIP_BASE + "background:#fff;border:1px solid rgba(0,0,0,0.15);color:#003366;"
+    }));
+
+    const cases = this.filtered().map(c => {
+      const coverImage = this.getCoverImage(c);
+      return { ...c, coverImage, hasCoverImage: !!coverImage, onOpen: () => this.openDetail(c.id),
+        coverImageRef: (el) => { if (el && el.src !== coverImage) el.src = coverImage; } };
+    });
+
+    const activeFilters = [];
+    if (categoria !== 'Todos') activeFilters.push({ label:categoria, onRemove:()=>this.removeFilter('categoria',categoria) });
+    if (search) activeFilters.push({ label:'"'+search+'"', onRemove:()=>this.removeFilter('search',search) });
+    Object.entries(adv).forEach(([k,vals]) => vals.forEach(v => activeFilters.push({ label:v, onRemove:()=>this.removeFilter(k,v) })));
+
+    const boxBase = "width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;";
+    const pq = (this.state.panelSearch || '').toLowerCase().trim();
+    const filterSections = buildSections(this.getCasos()).map(s => ({
+      title: s.title,
+      opts: s.options.filter(o => !pq || o.toLowerCase().includes(pq)).map(o => {
+        const checked = adv[s.key].includes(o);
+        return {
+          label: o, checked,
+          onToggle: () => this.toggleAdv(s.key, o),
+          boxStyle: checked ? boxBase + "background:#619b5c;border:1px solid #619b5c;" : boxBase + "background:#fff;border:1px solid #cbd5e1;"
+        };
+      })
+    })).filter(s => s.opts.length > 0 || !pq);
+
+    const casos = this.getCasos();
+    const caso = casos.find(c => c.id === detailId) || casos[0];
+    const n = cases.length;
+
+    let mediaItems;
+    if (caso.media && caso.media.trim()) {
+      mediaItems = caso.media.split('|').map(s => s.trim()).filter(Boolean).map(raw => {
+        const ci = raw.indexOf('::');
+        const token = (ci > -1 ? raw.slice(0, ci) : raw).trim();
+        const caption = ci > -1 ? raw.slice(ci + 2).trim() : '';
+        let item;
+        if (token.startsWith('vid:')) item = { type:'vid', url: token.slice(4) };
+        else if (token.startsWith('img:')) item = { type:'img', url: token.slice(4) };
+        else item = { type:'img', url: token };
+        item.caption = caption;
+        return item;
+      });
+    } else if (caso.imagenUrl) {
+      mediaItems = [{ type:'img', url: caso.imagenUrl, caption:'' }];
+    } else {
+      mediaItems = [{ type:'img', url: 'assets/detail1.png', caption:'' }];
+    }
+    const mediaTotal = mediaItems.length;
+    const mediaIdx = Math.min(this.state.mediaIndex || 0, mediaTotal - 1);
+    const activeMedia = mediaItems[mediaIdx];
+    const dotBase = "border:none;cursor:pointer;border-radius:50%;padding:0;";
+    const mediaDots = mediaItems.map((m,i) => ({
+      onClick: () => this.setMedia(i),
+      style: i === mediaIdx ? dotBase + "width:10px;height:10px;background:#fff;" : dotBase + "width:8px;height:8px;background:rgba(255,255,255,0.5);"
+    }));
+
+    const imageOnly = mediaItems.filter(m => m.type !== 'vid');
+    const activeImgIndex = activeMedia.type !== 'vid' ? Math.max(0, imageOnly.findIndex(m => m.url === activeMedia.url)) : 0;
+    const lightboxTotal = imageOnly.length;
+    const lightboxIdx = Math.min(this.state.lightboxIndex || 0, lightboxTotal - 1);
+    const lightboxUrl = lightboxTotal > 0 ? imageOnly[lightboxIdx].url : '';
+
+    const impactoKpis = (caso.impactoKpis || '').split('|').map(s => s.trim()).filter(Boolean).map(seg => {
+      const ci = seg.indexOf(':');
+      if (ci > -1) return { value: seg.slice(0, ci).trim(), label: seg.slice(ci + 1).trim(), hasLabel: true };
+      return { value: seg, label: '', hasLabel: false };
+    }).filter(k => k.value);
+
+    const impactoRows = (() => {
+      if (caso.impactoAntes && caso.impactoDespues) {
+        const antes = caso.impactoAntes.split('|').map(s => s.trim()).filter(Boolean);
+        const despues = caso.impactoDespues.split('|').map(s => s.trim()).filter(Boolean);
+        const n = Math.max(antes.length, despues.length);
+        return Array.from({length: n}, (_, i) => ({antes: antes[i] || '', despues: despues[i] || ''}));
+      }
+      return (caso.impactoMetrics || []).map(m => {
+        const parts = (m.value || '').split('→');
+        return {antes: (parts[0] || '').trim(), despues: (parts[1] || parts[0] || '').trim()};
+      });
+    })();
+
+    return {
+      isHome: page==='home', isCasos: page==='casos', isDetail: page==='detail',
+      isLoadingCasos: !!this.state.casosLoading,
+      goHome: this.goHome, goCasos: this.goCasos,
+      exploreStrategy: () => this.explore('Data Strategy'),
+      exploreViz: () => this.explore('Data Viz'),
+      exploreFabric: () => this.explore('Data Fabric'),
+      exploreIA: () => this.explore('Data IA'),
+      chips, cases, activeFilters, filterSections, panelSearch: this.state.panelSearch, onPanelSearch: this.onPanelSearch,
+      search, onSearch: this.onSearch,
+      openPanel: this.openPanel, closePanel: this.closePanel, panelOpen,
+      clearFilters: this.clearFilters,
+      hasActiveFilters: activeFilters.length > 0,
+      isEmpty: n === 0,
+      resultLabel: n + (n === 1 ? ' caso' : ' casos'),
+      detailTitulo: caso.titulo, detailIndustria: caso.industria, detailCategoria: caso.categoria,
+      detailArea: caso.area || '', detailHasArea: !!(caso.area && String(caso.area).trim()),
+      detailAnio: caso.año || '—', detailPais: caso.pais || '—',
+      detailFuenteDatos: this.splitComma(caso.fuenteDatos), detailHasFuenteDatos: !!(caso.fuenteDatos && String(caso.fuenteDatos).trim()),
+      detailTecnologiasUtilizadas: this.splitComma(caso.tecnologiasUtilizadas),
+      detailDescripcionLarga: caso.descripcionLargaDetalle || '', detailHasDescripcion: !!(caso.descripcionLargaDetalle && caso.descripcionLargaDetalle.trim()), detailNoDescripcion: !(caso.descripcionLargaDetalle && caso.descripcionLargaDetalle.trim()),
+      detailProblemaTitle: caso.problemaTitle || 'Problema', detailProblemaItems: this.parseBulletItems(caso.problemaItems), detailHasProblema: !!(caso.problemaItems && caso.problemaItems.trim && caso.problemaItems.trim()), detailNoProblema: !(caso.problemaItems && caso.problemaItems.length),
+      detailSolucionTitle: caso.solucionTitle || 'Solución', detailSolucionItems: this.parseBulletItems(caso.solucionItems), detailHasSolucion: !!(caso.solucionItems && caso.solucionItems.trim && caso.solucionItems.trim()), detailNoSolucion: !(caso.solucionItems && caso.solucionItems.length),
+      detailTecnologiaColLeft: (caso.tecnologiaItems || []).slice(0, Math.ceil((caso.tecnologiaItems || []).length / 2)),
+      detailTecnologiaColRight: (caso.tecnologiaItems || []).slice(Math.ceil((caso.tecnologiaItems || []).length / 2)),
+      detailImpactoSummary: caso.impactoSummary || '',
+      detailHasImpactoSummary: !!(caso.impactoSummary && caso.impactoSummary.trim()),
+      detailImpactoKpis: impactoKpis, detailHasImpactoKpis: impactoKpis.length > 0,
+      detailImpactoRows: impactoRows,
+      detailHasImpactoRows: impactoRows.length > 0,
+      detailHasImpacto: !!((caso.impactoAntes && caso.impactoDespues) || (caso.impactoMetrics && caso.impactoMetrics.length) || (caso.impactoSummary && caso.impactoSummary.trim())),
+      detailNoImpacto: !((caso.impactoAntes && caso.impactoDespues) || (caso.impactoMetrics && caso.impactoMetrics.length) || (caso.impactoSummary && caso.impactoSummary.trim())),
+      detailHasImagenes: !!((caso.media && caso.media.trim()) || caso.imagenUrl),
+      detailNoImagenes: !((caso.media && caso.media.trim()) || caso.imagenUrl),
+      detailMediaUrl: activeMedia.url, detailMediaIsVideo: activeMedia.type === 'vid', detailMediaIsImage: activeMedia.type !== 'vid',
+      detailMediaCaption: activeMedia.caption || '', detailMediaHasCaption: !!(activeMedia.caption && activeMedia.caption.trim()),
+      detailMediaRef: (el) => {
+        if (!el) return;
+        if (el.tagName === 'VIDEO') {
+          el.loop = true; el.muted = true; el.autoplay = true; el.playsInline = true; el.controls = false;
+          if (el.src !== activeMedia.url) { el.src = activeMedia.url; el.load(); el.play().catch(() => {}); }
+        } else if (el.src !== activeMedia.url) { el.src = activeMedia.url; }
+      },
+      lightboxImgRef: (el) => { if (el && lightboxUrl && el.src !== lightboxUrl) el.src = lightboxUrl; },
+      detailShowMediaNav: mediaTotal > 1, detailMediaDots: mediaTotal > 1 ? mediaDots : [],
+      detailPrevMedia: () => this.prevMedia(mediaTotal), detailNextMedia: () => this.nextMedia(mediaTotal),
+      carouselTouchStart: this.carouselTouchStart, carouselTouchEnd: (e) => this.carouselTouchEnd(e, mediaTotal),
+      detailImageOnClick: () => this.openLightbox(activeImgIndex),
+      lightboxOpen: !!this.state.lightboxOpen, lightboxUrl, lightboxHasUrl: !!lightboxUrl, lightboxShowNav: lightboxTotal > 1,
+      closeLightbox: this.closeLightbox, closeLightboxClick: this.closeLightboxClick, overlayClick: this.overlayClick,
+      lightboxPrevClick: this.prevLightboxImg, lightboxNextClick: this.nextLightboxImg,
+      stopClickPropagation: this.stopClickPropagation
+    };
+  }
+}
+</script>
+</body>
+</html>
