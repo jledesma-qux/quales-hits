@@ -580,9 +580,10 @@ class Component extends DCLogic {
   };
   getCasos = () => this.state.casos || CASOS_FALLBACK;
 
-  goHome = () => this.setState({ page:'home', panelOpen:false });
-  goCasos = () => this.setState({ page:'casos', panelOpen:false });
-  openDetail = (id) => this.setState({ page:'detail', detailId:id, panelOpen:false, mediaIndex:0 });
+  scrollTop = () => { window.scrollTo(0,0); document.documentElement.scrollTop = 0; document.body.scrollTop = 0; };
+  goHome = () => { this.setState({ page:'home', panelOpen:false }); this.scrollTop(); };
+  goCasos = () => { this.setState({ page:'casos', panelOpen:false }); this.scrollTop(); };
+  openDetail = (id) => { this.setState({ page:'detail', detailId:id, panelOpen:false, mediaIndex:0 }); this.scrollTop(); };
   prevMedia = (total) => this.setState(s => ({ mediaIndex: ((s.mediaIndex||0) - 1 + total) % total }));
   nextMedia = (total) => this.setState(s => ({ mediaIndex: ((s.mediaIndex||0) + 1) % total }));
   setMedia = (i) => this.setState({ mediaIndex: i });
