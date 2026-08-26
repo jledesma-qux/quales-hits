@@ -1,0 +1,312 @@
+[
+  {
+    "id": 1,
+    "titulo": "Modernización de procesos",
+    "descripcion": "Plataforma de automatización con IA y modernización de procesos en cobranzas, proveedores y conciliaciones.",
+    "descripcionLargaDetalle": "El objetivo principal de esta iniciativa para la organización es modernizar y automatizar los procesos operativos de soporte administrativo (finanzas, tesorería, cuentas por pagar y cobrar) para liberar tiempo de tareas repetitivas, disminuir errores operativos y robustecer la estructura interna de la empresa frente a su crecimiento acelerado.",
+    "tags": [
+      "Automatización",
+      "IA"
+    ],
+    "categoria": "Data IA",
+    "industria": "Retail",
+    "area": "Finanzas",
+    "objetivoNegocio": [
+      "Automatización / Optimización de procesos"
+    ],
+    "tipoSolucion": "Aplicación Web",
+    "duracionProyecto": "3-6 meses",
+    "tipoCliente": "PyME",
+    "badges": [
+      "Alto Impacto"
+    ],
+    "tecnologia": [
+      "Python (FastAPI)",
+      "Pandas",
+      "Docker",
+      "React",
+      "PostgreSQL",
+      "Gemini API",
+      "OpenRouter API"
+    ],
+    "año": "2026",
+    "pais": "Argentina",
+    "media": "img:assets/case-img1.png::Bandeja de cobranzas: estado de cada cobro pendiente de validación | img:assets/case-img2.png::El sistema bloquea un cobro por baja calidad de imagen del cheque y pide una nueva foto | vid:assets/case-vid.mp4::Recorrido del flujo de validación de cobros en el portal",
+    "problemaTitle": "Ineficiencias en cuatro frentes operativos",
+    "problemaItems": "Cobranzas: Emplea a 5 personas a tiempo completo (full-time), y el tiempo de procesamiento de los correos y PDF entrantes toma días o semanas. | Proveedores: Involucra a 2.5 personas a tiempo completo para procesar unas 1,400 facturas al mes, lo que demora entre 2 y 5 días por lote. | Conciliación Interna: Es ejecutada por el equipo contable (horas dedicadas) sobre 50 cuentas y 4 entidades legales, requiriendo entre 3 y 5 días por cada cierre. | Conciliación Bancaria: También a cargo del equipo contable para 77 cuentas bancarias de 17 bancos distintos, demandando entre 5 y 10 días por cada cierre.",
+    "solucionTitle": "Portal de validación Inteligente y automatización financiera.",
+    "solucionItems": "Fin del \"punteo\" visual, el trabajo manual de revisar celda por celda desaparece, transformando procesos de varios días en una rápida validación a través de un portal web | Procesamiento de cobros inmediato, la IA extrae la información de los correos al instante. El usuario aprueba automáticamente los casos exitosos (verdes) y solo dedica tiempo a resolver bloqueos o excepciones (casos amarillos o rojos) | Conciliaciones en un par de clics, un motor agrupa automáticamente los movimientos contables y bancarios (coincidencia exacta, tolerada o combinatoria) el equipo solo realiza una validación visual rápida de los pares sugeridos y resuelve los desvíos puntuales desde la interfaz.",
+    "cronogramaTitle": "CRONOGRAMA DE TRABAJO",
+    "cronogramaMedia": "img:assets/cronograma.png",
+    "impactoKpis": "85%: conciliaciones automáticas | 2 h: cierre de conciliación (antes 10 días) | Inmediato: pedidos y cobros (antes 8 días) | 95%: del flujo operativo automatizado",
+    "impactoAntes": "Gestión de pedidos y cobros 8 días. | Conciliación de cuentas 10 días. | Revisión de todos los pedidos y cobros. | 100% de conciliaciones manuales.",
+    "impactoDespues": "Gestión de pedidos y cobros inmediato | Conciliación de cuentas 2 horas | Menos el 15% requeren revisión. | 85% de conciliaciones son automáticas.",
+    "impactoSummary": "La automatización reducirá los tiempos de procesamiento y cierre contable de varios días a una disponibilidad casi inmediata, resolviendo de forma automática el 95% del flujo operativo. Como resultado, los equipos dejarán atrás la carga manual masiva para enfocarse exclusivamente en la validación y resolución de excepciones (casos amarillos y rojos) mediante un portal web con un par de clics, preparando a la estructura administrativa para soportar el acelerado crecimiento del negocio.",
+    "fuenteDatos": [
+      "PostgreSQL"
+    ],
+    "tecnologiasUtilizadas": [
+      "Python (FastAPI)",
+      "Pandas",
+      "Docker",
+      "React",
+      "Gemini API",
+      "OpenRouter API"
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "Modelo predictivo de ausentismo",
+    "descripcion": "Predicción semanal del riesgo de ausentismo por colaborador para anticipar y reducir su impacto operativo y de costos.",
+    "descripcionLargaDetalle": "El modelo de predicción de ausentismo semanal es una solución de machine learning que estima cada lunes la probabilidad de que un empleado de los centros de distribución (Shipping) se ausente durante la semana siguiente. El modelo automatiza una decisión que hoy depende del juicio manual de líderes y de heurísticas simples, y la escala a más de 60.000 colaboradores de forma consistente y reproducible.",
+    "tags": [
+      "IA"
+    ],
+    "categoria": "Data IA",
+    "industria": "E-commerce",
+    "area": "Logística",
+    "objetivoNegocio": [
+      "Habilitar intervenciones preventivas antes de que la ausencia ocurra."
+    ],
+    "tipoSolucion": "Sistema predictivo",
+    "duracionProyecto": ">6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto"
+    ],
+    "tecnologia": [
+      "Python",
+      "SQL",
+      "XGBoost 2.x",
+      "scikit-learn",
+      "category encoders",
+      "SHAP",
+      "Big Query",
+      "Parquet",
+      "pandas/pyarrow",
+      "VSCode",
+      "Jupyter",
+      "Poetry",
+      "Tableau"
+    ],
+    "año": "2025, 2026",
+    "pais": "Argentina",
+    "media": "img:assets/case2-img2.png::Dashboard principal: distribución de la dotación por nivel de riesgo y ranking de sites y líderes más críticos | img:assets/case2-img4.png::Detalle de empleados con score de riesgo individual para la semana de predicción | img:assets/case2-img5.png::Vista de un caso puntual, con el score de riesgo y la acción recomendada para el líder",
+    "problemaTitle": "Ausentismo no planificado como uno de los principales factores de fricción operativa.",
+    "problemaItems": "No escala: es inviable sostener un juicio manual consistente sobre una dotación de más de 60.000 personas. | Es reactivo por diseño: la organización se entera de la ausencia el mismo día, cuando ya no hay margen para prevenir, solo para cubrir. | Es inconsistente: el criterio varía de líder a líder, generando decisiones dispares ante situaciones similares (y perdiendo la oportunidad de detectar señales tempranas de empleados en riesgo, antes de que el ausentismo se convierta en un patrón).",
+    "solucionTitle": "Diseño e implementación de un modelo predictivo de machine learning y un dashboard operativo integrado.",
+    "solucionItems": "De reactivo a proactivo: los líderes pasan de \"cubrir la ausencia el mismo día\" a sostener una conversación preventiva con el empleado antes de que la falta suceda, abriendo espacio para detectar y resolver causas subyacentes (salud, carga laboral, motivación, factores personales). | De intuición a consistencia: la decisión de a quién priorizar para una intervención deja de depender del criterio individual de cada líder y pasa a basarse en un score probabilístico, reproducible y aplicado por igual a los más de 60.000 empleados de la operación. | De costo hundido a planificación: al anticipar la disponibilidad real de personal por turno y proceso, el modelo habilita una mejor planificación de dotación, reduciendo la necesidad de horas extra y contratación de emergencia.",
+    "cronogramaTitle": "CRONOGRAMA DE TRABAJO",
+    "impactoKpis": "7 días: de anticipación (antes 0) | 100%: de la dotación con scoring (+60.000) | 15-20%: menos ausentismo no planificado | +30: intervenciones preventivas/mes",
+    "impactoAntes": "Detección de riesgo de ausentismo 0 días de anticipación. | Cobertura de seguimiento manual sobre ~5% de la dotación (solo casos \"visibles\" para el líder). | ~10% de tasa de ausentismo semanal sin intervención previa. | 0 acciones preventivas formales registradas por semana.",
+    "impactoDespues": "Predicción con 7 días de anticipación, cada lunes, sobre la semana siguiente. | Scoring de riesgo aplicado al 100% de la dotación (+60.000 colaboradores) de forma automática. | Reducción estimada del 15-20% en ausentismo no planificado en los grupos de riesgo alto/muy alto tras la intervención preventiva. | +30 intervenciones preventivas mensuales (encuestas/conversaciones) sobre perfiles identificados como de riesgo.",
+    "impactoSummary": "El modelo transformó la gestión del ausentismo en los centros de distribución de esta multinacional, pasando de un esquema reactivo (cubrir la falta el mismo día) a uno preventivo (intervenir antes de que ocurra), con cobertura sobre más de 60.000 empleados.",
+    "fuenteDatos": [
+      "SQL",
+      "Big Query",
+      "Parquet"
+    ],
+    "tecnologiasUtilizadas": [
+      "Python",
+      "XGBoost 2.x",
+      "scikit-learn",
+      "category encoders",
+      "SHAP",
+      "Pandas",
+      "VS Code",
+      "Jupyter",
+      "Poetry",
+      "Tableau"
+    ]
+  },
+  {
+    "id": 3,
+    "titulo": "Analítica de datos industriales aplicada a plantas de biomasa",
+    "descripcion": "Análisis de datos operativos de central térmica para determinar la combinación óptima de humedad y proporción de chips de biomasa que maximiza generación, potencia vendida y estabilidad de llama.",
+    "descripcionLargaDetalle": "Análisis de +3.500 horas de datos operativos reales de la central. El estudio comparó combinaciones de humedad de biomasa y proporción de chips mediante partición por terciles y validación estadística, identificando que la combinación \"Humedad Baja + Chips Bajos\" domina simultáneamente en generación bruta, potencia vendida y estabilidad de llama. Como parte del trabajo se generaron informes de detección de anomalías, se refinaron las curvas teóricas de la planta y se elaboraron propuesta de sistema de recomendación en tiempo real para el operador de caldera.",
+    "tags": [
+      "IA",
+      "Ciencia de datos"
+    ],
+    "categoria": "Data IA",
+    "industria": "Energía",
+    "area": "Operaciones",
+    "objetivoNegocio": [
+      "Reducir el sobreconsumo de biomasa y maximizar la generación y potencia vendida mediante la identificación de la combinación óptima de operación",
+      "sentando además las bases (calidad de datos",
+      "curvas reales) para una futura recomendación de compra de biomasa con base económica."
+    ],
+    "tipoSolucion": "Sistema predictivo",
+    "duracionProyecto": "3–6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto"
+    ],
+    "tecnologia": [
+      "Python",
+      "Visual Studio Code",
+      "IA generativa",
+      "Spec Driven Development",
+      "ANOVA"
+    ],
+    "año": "2025, 2026",
+    "pais": "Argentina",
+    "media": "img:assets/case3-img1.png::Mapa de calor que cruza caudal de vapor y aire secundario, mostrando en qué combinaciones se alcanza el mejor rango de potencia vendida | img:assets/case3-img2.png::Serie temporal de presión de vapor de caldera, con los valores atípicos (mayores a 70) resaltados para su revisión | img:assets/case3-img3.png::Detección de un período anormal en la relación entre proporción de chips y generación (MW), marcado para revisión del equipo técnico | img:assets/case3-img4.png::Importancia de variables del modelo (SHAP): qué factores influyen más en el rendimiento de la caldera | img:assets/case3-img5.png::Comparación de rendimiento por combinación de humedad y proporción de chips, segmentada por nivel de oxígeno | img:assets/case3-img6.png::Relación entre cada variable operativa y su impacto en el modelo (gráficos de dependencia SHAP)",
+    "problemaTitle": "Variabilidad de biomasa genera inestabilidad y sobreconsumo energético.",
+    "problemaItems": "La variabilidad en la humedad y composición (proporción de chips) de la biomasa utilizada en la caldera generaba inestabilidad en la generación eléctrica, sin que existiera una forma sistemática de identificar qué combinación operativa era más eficiente. Además, el cliente contaba con curvas teóricas de referencia demasiado genéricas (líneas rectas de 45°) que no reflejaban el comportamiento real de la planta, y con datos operativos que incluían errores de sensores (por ejemplo, lecturas de oxígeno en cero) sin un proceso claro de detección. A esto se sumaba la dificultad de medir el impacto real de mejoras previas por falta de un punto de comparación serio y por \"efectos confundidos\".",
+    "solucionTitle": "Modelo de análisis comparativo de combinaciones humedad–chips basado en datos históricos reales.",
+    "solucionItems": "Se construyó un pipeline de limpieza y validación de datos. | Se aplicó una partición por terciles para comparar grupos de operación de forma balanceada. | Se validó estadísticamente la diferencia entre combinaciones mediante ANOVA y pruebas post-hoc. | Se generaron matrices de rendimiento energético bruto, potencia vendida y estabilidad operativa. | Hallazgo específico sobre sobreconsumo de biomasa. | Implementación de nformes de anomalías para que el equipo técnico corrija problemas de datos y el cliente identifique necesidad de reemplazo de sensores o alertas dinámicas. | Refinamiento de curvas teóricas de la planta con datos reales.",
+    "cronogramaTitle": "CRONOGRAMA DE TRABAJO",
+    "cronogramaMedia": "img:assets/case3-cronograma.png",
+    "impactoKpis": "+2.6 MW: generación bruta adicional | -17.7%: consumo de biomasa | <2%: registros con error (antes ~12%) | <8%: desvío de curvas (antes ~30%)",
+    "impactoAntes": "Generación promedio de ~14.8 MW en condición subóptima. | Consumo de biomasa de ~57.6 Ton/h para sostener la operación. | ~12% de los registros de sensores con lecturas erróneas o inconsistentes sin detección sistemática (ej. sensor de oxígeno en cero) | Curvas teóricas genéricas (líneas de 45°) con un desvío estimado de ~30% respecto a la operación real.",
+    "impactoDespues": "~17.4 MW en la combinación óptima (+2.6 MW brutos), equivalente a ~$1.2M USD/año adicionales estimados a un precio de referencia de 60 USD/MWh. (cifra de precio y total anual simulados). | ~47.4 Ton/h en la combinación óptima (-10.2 Ton/h, -17.7%), un ahorro estimado de ~$210 mil USD/año asumiendo un costo promedio de 35 USD/Ton. (costo por tonelada simulado). | <2% de registros con error tras la implementación de informes de anomalías, habilitando reemplazo proactivo de equipos. (porcentajes simulados) | cCrvas adaptativas basadas en datos históricos con un desvío estimado de <8%, mejorando la precisión de referencia operativa.",
+    "impactoSummary": "El proyecto convirtió +3.500 horas de datos operativos dispersos en una recomendación operativa clara, cuantificada y accionable, dejando además las bases (calidad de datos, curvas reales) para una futura fase de recomendación de compra de biomasa con retorno económico.",
+    "fuenteDatos": [],
+    "tecnologiasUtilizadas": [
+      "Python",
+      "VS Code",
+      "IA generativa",
+      "Spec Driven Development",
+      "ANOVA"
+    ]
+  },
+  {
+    "id": 4,
+    "titulo": "Agente Comercial",
+    "descripcion": "Asistente de IA conversacional que unifica datos comerciales, logísticos y de CRM para dar respuestas rápidas al equipo comercial y técnico en terreno.",
+    "descripcionLargaDetalle": "Negocio comercial amplio, con múltiples canales de venta (directos e indirectos), plataformas propias, un CRM (Creatio) y sistemas transaccionales (SAP) que no siempre están integrados entre sí. A partir del relevamiento de necesidades del equipo comercial, técnico y de administración comercial, se desarrolló un asistente de IA que consolida esta información dispersa y la pone a disposición del usuario final (técnicos, promotores, administración comercial) en lenguaje natural, evitando que cada equipo tenga que cruzar manualmente reportes de distintas fuentes (SAP, CRM, plataformas de canal) para responder preguntas operativas del día a día. El caso informe ejecutivo 2026 ejemplifica el tipo de análisis que el asistente busca automatizar: comparación de ventas y unidades vs. año anterior, identificación de familias de producto en caída o crecimiento, detección de productos que desaparecieron del mix, seguimiento de programas comerciales y cumplimiento de plan.",
+    "tags": [
+      "IA",
+      "Agente"
+    ],
+    "categoria": "Data IA",
+    "industria": "Laboratorio",
+    "area": "Comercial",
+    "objetivoNegocio": [
+      "Dar visibilidad unificada y en tiempo real del negocio comercial (multicanal",
+      "multi-cuenta",
+      "multi-familia de producto) para que el equipo comercial y técnico tome decisiones más rápidas en terreno",
+      "mejore el cumplimiento de objetivos y detecte desvíos (de precio",
+      "de despacho",
+      "de mix de producto) sin depender de reportes manuales cruzados entre sistemas."
+    ],
+    "tipoSolucion": "Asistente de IA",
+    "duracionProyecto": "< 3 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto",
+      "IA"
+    ],
+    "tecnologia": [
+      "Python",
+      "Azure",
+      "SQL",
+      "CRM",
+      "Salesforce",
+      "Gemini",
+      "Claude",
+      "GPT"
+    ],
+    "año": "2026",
+    "pais": "Argentina",
+    "media": "img:assets/case4-img1.png::Pantalla principal del asistente, conectado a SAP, Creatio CRM y el portal de canal | img:assets/case4-img2.png::Informe ejecutivo de ventas 2026 vs. 2025 generado por el asistente en lenguaje natural | img:assets/case4-img3.png::Consulta de disponibilidad de stock por depósito, cruzando datos de SAP y logística | vid:assets/case4-vid.mp4::Demo en vivo del asistente respondiendo consultas comerciales en lenguaje natural",
+    "problemaTitle": "Información comercial dispersa entre canales, sistemas y equipos.",
+    "problemaItems": "Ventas directas e indirectas distribuidas en múltiples canales sin una estructura unificada. | Una misma entidad puede tener distintos roles según el canal, sin un maestro único de clientes. | El estado de despacho, métrica crítica para el negocio, no está disponible de forma nativa en SAP. | Las frecuencias de entrega del operador logístico no están modeladas a nivel de código postal/localidad. | Administración Comercial no cuenta con una forma ágil de auditar desvíos de precios ni detectar ventas por debajo del piso establecido. | No hay un proceso claro para conciliar notas de crédito por cliente facturador o distribuidor. | Técnicos y promotores en terreno necesitan consultar rápidamente historial de interacciones (CRM), inventario de material promocional y proyección de cumplimiento de objetivos, pero esta información está fragmentada entre sistemas.",
+    "solucionTitle": "Asistente de IA multicanal para el equipo comercial y técnico.",
+    "solucionItems": "Consolidación de ventas directas e indirectas de todas las plataformas en una estructura única. | Maestro único de cliente mediante árbol jerárquico (Firma, Razón Social, CUIT, Establecimiento) apalancado en el CRM, resolviendo el problema de múltiples roles por cuenta. | Consulta ágil de proyección de cumplimiento de objetivos trimestrales para técnicos en terreno. | Acceso a inventario y despacho de material promocional directamente desde el asistente. | Acceso al historial de interacciones registrado (última visita, minutas, compromisos asumidos). | Visibilidad del estado de despacho, no disponible nativamente en SAP. | Modelo de frecuencias de entrega a operador logístico a nivel de código postal/localidad. | Auditoría de precios: detección de desvíos vs. lista vigente y ventas por debajo del piso establecido. | Generación de dashboards ejecutivos con KPIs de ventas, unidades, variaciones por familia de producto y cumplimiento de plan.",
+    "cronogramaTitle": "CRONOGRAMA DE TRABAJO",
+    "cronogramaMedia": "img:assets/case4-cronograma.png",
+    "impactoKpis": "15-45 s: respuesta (antes cruces de meses) | 100%: fuerza comercial homologada | 5 min: refresco del Data Warehouse",
+    "impactoAntes": "50 usuarios comerciales obligados a acceder a múltiples plataformas dispersas (CRM Creatio, SAP, Salesforce) o reportes estáticos para consultar KPIs y objetivos trimestrales. | 22 descargas de datos manuales y múltiples planillas Excel. | Actualizaciones y cruces de información transaccional que tardaban meses.",
+    "impactoDespues": "Acceso unificado en ruta mediante consultas dinámicas y audios por WhatsApp, con salidas automatizadas y gestión de latencia controlada entre 15 y 45 segundos. | Homologación del 100% de la fuerza comercial bajo un \"Super Maestro\" de entidades unificado. | Implementación de un esquema automatizado de carga del Data Warehouse cada 5 minutos.",
+    "impactoSummary": "El impacto apunta a que el equipo comercial y técnico pase de cruzar reportes manualmente entre SAP, CRM y plataformas de canal, a resolver esas mismas preguntas en segundos a través de un asistente conversacional único.",
+    "fuenteDatos": [
+      "SQL",
+      "CRM",
+      "Salesforce"
+    ],
+    "tecnologiasUtilizadas": [
+      "Python",
+      "Azure",
+      "Gemini",
+      "Claude",
+      "GPT"
+    ]
+  },
+  {
+    "id": 5,
+    "titulo": "Agente Legal (BF Legal)",
+    "descripcion": "Desarrollo e implementación de un agente de contestaciones de demandas civiles basado en inteligencia artificial.",
+    "descripcionLargaDetalle": "Este proyecto abarca la implementación y puesta en marcha de un Agente de Contestaciones diseñado para automatizar y optimizar la gestión de demandas en el ámbito civil. El sistema procesa los casos y formula respuestas personalizadas siguiendo las particularidades metodológicas de distintos juzgados y profesionales del derecho.",
+    "tags": [
+      "IA",
+      "Agente"
+    ],
+    "categoria": "Data IA",
+    "industria": "Legal",
+    "area": "Demandas",
+    "objetivoNegocio": [
+      "Generar respuestas automatizadas que se adapten a la lógica específica requerida por cada juzgado y abogado."
+    ],
+    "tipoSolucion": "Agente / Asistente de IA",
+    "duracionProyecto": "< 3 meses",
+    "tipoCliente": "Servicios",
+    "badges": [
+      "Alto Impacto",
+      "Con IA"
+    ],
+    "fuenteDatos": [],
+    "tecnologiasUtilizadas": [
+      "Phyton",
+      "Nginx"
+    ],
+    "pais": "Argentina",
+    "media": "vid:https://drive.google.com/uc?export=download&id=1PbDPhGOHhTPyhCDuugf7cZZQZo1RS8tO::Recorrido del flujo completo: desde subir la demanda hasta el borrador de contestación generado | img:https://drive.google.com/thumbnail?id=1LA2U9el1Z7vK3X4Pcqdz-VLL92nnEAsT&sz=w2000::Pantalla principal del Agente Legal, con los casos recientes y el área para subir la demanda en PDF | img:https://drive.google.com/thumbnail?id=1Vp69OJjEmAi0YUvgcscSeBEjy9s_qbcF&sz=w2000::Borrador de contestación generado, con los datos faltantes de la demanda marcados para completar y las negativas para verificar",
+    "problemaTitle": "Cuello de botella operativo",
+    "problemaItems": "Diversidad de criterios jurídicos: Cada juzgado y abogado tiene lógicas y metodologías específicas de redacción que el agente de IA debe replicar con precisión. | Resistencia y barrera de adopción: Riesgo de rechazo o frustración de los abogados ante la IA debido a falsas expectativas o dificultades en la interacción con el sistema. | Dependencia de insumos clave: Demoras en la entrega de casos reales y datos históricos necesarios para entrenar y calibrar el modelo a tiempo. | Agendas de especialistas ajustadas: Disponibilidad limitada de los profesionales clave para validar diseños y pruebas dentro del ajustado plazo de 5 semanas. | Desviación del alcance pactado: Presión por incorporar automatizaciones externas (como extracción de datos de sistemas del estudio) no contempladas originalmente.",
+    "solucionTitle": "Agente de IA Legal: automatización y adaptación de respuestas.",
+    "solucionItems": "Inteligencia Adaptativa: Redacción de contestaciones alineadas a la lógica específica de cada juzgado y abogado, entrenada con ejemplos de casos reales. | Monitoreo y Control: Seguimiento mediante estadísticas de adopción y reportes automáticos de errores para garantizar la consistencia técnica de la IA. | Adopción Garantizada: Ciclo rápido de pruebas con usuarios clave (Key Users) y talleres de capacitación funcional para eliminar la desconfianza del equipo.",
+    "impactoKpis": "Menos de 5 min: generación de borrador | 100%: lógicas judiciales homologadas. | Real-time: reporte de consistencia.",
+    "impactoAntes": "Redacción manual e individualizada de cada contestación de demanda, consumiendo de 4 a 6 horas de análisis y escritura por caso. | Dispersión metodológica y dificultad para adaptar el escrito a las lógicas específicas requeridas por cada juzgado o abogado patrocinante. | Desconfianza del equipo legal en la IA y falta de visibilidad (caja negra) sobre la tasa de uso o los errores de consistencia en los escritos.",
+    "impactoDespues": "Generación automatizada de un borrador preliminar de alta calidad en 3 a 5 minutos, listo para la revisión final del abogado. | Coherencia y consistencia jurídica con lógicas judiciales 100% homologadas, respetando estrictamente las exigencias del juzgado correspondiente. | Panel de control con métricas de adopción y reportes de errores en tiempo real, respaldados por talleres que aseguran una transición fluida.",
+    "impactoSummary": "El impacto apunta a que el equipo de abogados pase de analizar y redactar manualmente contestaciones de demandas civiles adaptándose a las lógicas dispersas de cada juzgado, a revisar y perfeccionar borradores jurídicos consistentes en cuestión de minutos a través de un agente de inteligencia artificial entrenado a su medida."
+  },
+  {
+    "id": 9,
+    "titulo": "Optimización de parques eólicos basada en datos.",
+    "descripcion": "Monitoreo inteligente de aerogeneradores: reduciendo pérdidas financieras con datos",
+    "descripcionLargaDetalle": "El proyecto busca optimizar un parque eólico mediante el análisis de datos de aerogeneradores para mitigar pérdidas financieras. La herramienta central consiste en un tablero interactivo para visualizar el rendimiento operativo.",
+    "tags": [
+      "Business Intelligence",
+      "Machine Learning"
+    ],
+    "categoria": "Data Strategy",
+    "industria": "Energía",
+    "area": "Operaciones",
+    "objetivoNegocio": [
+      "Reducir las pérdidas financieras por baja eficiencia entre aerogeneradores",
+      "cuantificando el impacto real del efecto estela y validando con evidencia propia —antes de comprometer una inversión productiva— el potencial de un sistema de optimización inteligente del parque."
+    ],
+    "tipoSolucion": "Dashboard",
+    "duracionProyecto": "< 3 meses",
+    "tipoCliente": "Enterprise",
+    "fuenteDatos": [],
+    "tecnologiasUtilizadas": [
+      "VS Code",
+      "Python",
+      "Jupyter Notebook",
+      "Streamlit"
+    ],
+    "pais": "Argentina",
+    "media": "img:https://drive.google.com/thumbnail?id=1vucd6MvglEwqUHA6Euxtmk4z4Y_XNV4F&sz=w2000::Simulador del parque: potencia total generada y pérdida por efecto estela según las condiciones de viento | img:https://drive.google.com/thumbnail?id=1Fchn_zkyZ35OD0tKQU3Inct47iFIepC2&sz=w2000::Inspector de estela de un aerogenerador puntual, con la proyección física de su estela y potencia individual",
+    "problemaTitle": "Detección de ineficiencias en aerogeneradores.",
+    "problemaItems": "Falta de visibilidad: sin un sistema que permitiera medir la eficiencia energética real de cada aerogenerador, las ineficiencias pasaban desapercibidas. | Detección tardía: los bajos rendimientos y fallas operativas no se detectaban a tiempo, generando pérdidas financieras sostenidas. | Impacto en rentabilidad: la falta de visibilidad afectaba la rentabilidad general de la operación del parque.",
+    "solucionTitle": "Simulador de eficiencia eólica: cuantificando el efecto estela para justificar la inversión en optimización inteligente",
+    "solucionItems": "Prototipo interactivo con simulador de producción energética de los 36 aerogeneradores del parque en función de la velocidad y dirección del viento. | Visualización de potencia individual de cada aerogenerador mediante una escala de color (0 a 1.500 kW). | Estimación de producción global del parque bajo distintos escenarios de viento. | Simulación sobre limitación o apagado de aerogeneradores puntuales para observar el impacto en la producción total del parque.",
+    "impactoKpis": "Hasta +12%: más producción en escenarios de alta interferencia por estela | 36: aerogeneradores con recomendaciones individuales de limitación | Hasta USD 180.000/año: de ahorro proyectado con el sistema de optimización",
+    "impactoAntes": "El cliente no tenía forma de saber si las pérdidas de producción se debían a condiciones de viento normales o a ineficiencias evitables entre aerogeneradores. | La decisión de comprar un sistema automático de optimización se basaba en promesas de proveedores, sin evidencia propia sobre el potencial real de mejora. | El efecto estela era un concepto conocido en la industria pero no cuantificado ni visualizado para este parque en particular. | No existía un diagnóstico claro sobre qué datos históricos estaban disponibles ni su calidad.",
+    "impactoDespues": "Cuenta con una herramienta visual que aísla y cuantifica el impacto del efecto estela sobre la producción global. | Dispone de un prototipo manipulable que le permite explorar distintos escenarios y estimar el retorno esperado antes de invertir. | Puede ver, aerogenerador por aerogenerador, cómo pequeñas limitaciones individuales impactan en la producción total. | Se identificó el estado real de los datos (6 meses, con cortes) y se definió la curación como paso previo indispensable para construir un asistente inteligente confiable.",
+    "impactoSummary": "El proyecto le permitió al cliente pasar de una intuición no verificada sobre ineficiencias en su parque eólico a una evidencia cuantificada y visual del potencial de mejora, sin necesidad de comprometer una inversión en un sistema productivo desde el primer momento. El prototipo actuó como una prueba de concepto de bajo riesgo que valida la hipótesis de negocio (el efecto estela representa una oportunidad real de optimización) y sienta las bases técnicas y de datos para una futura implementación de Machine Learning."
+  }
+]
