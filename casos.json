@@ -75,14 +75,10 @@
     ],
     "tecnologia": [
       "Python",
-      "XGBoost 2.x",
-      "scikit-learn",
-      "category encoders",
-      "SHAP",
       "Pandas",
-      "VS Code",
-      "Jupyter",
-      "Poetry",
+      "Machine Learning (XGBoost",
+      "scikit-learn",
+      "SHAP)",
       "Tableau"
     ],
     "año": "",
@@ -105,14 +101,10 @@
     ],
     "tecnologiasUtilizadas": [
       "Python",
-      "XGBoost 2.x",
-      "scikit-learn",
-      "category encoders",
-      "SHAP",
       "Pandas",
-      "VS Code",
-      "Jupyter",
-      "Poetry",
+      "Machine Learning (XGBoost",
+      "scikit-learn",
+      "SHAP)",
       "Tableau"
     ]
   },
@@ -141,10 +133,8 @@
     ],
     "tecnologia": [
       "Python",
-      "VS Code",
-      "IA generativa",
-      "Spec Driven Development",
-      "ANOVA"
+      "IA Generativa",
+      "Análisis estadístico (ANOVA)"
     ],
     "año": "",
     "pais": "Argentina",
@@ -162,10 +152,8 @@
     "fuenteDatos": [],
     "tecnologiasUtilizadas": [
       "Python",
-      "VS Code",
-      "IA generativa",
-      "Spec Driven Development",
-      "ANOVA"
+      "IA Generativa",
+      "Análisis estadístico (ANOVA)"
     ]
   },
   {
@@ -198,9 +186,9 @@
     "tecnologia": [
       "Python",
       "Azure",
-      "Gemini",
+      "IA Generativa (Gemini",
       "Claude",
-      "GPT"
+      "GPT)"
     ],
     "año": "",
     "pais": "Argentina",
@@ -223,9 +211,9 @@
     "tecnologiasUtilizadas": [
       "Python",
       "Azure",
-      "Gemini",
+      "IA Generativa (Gemini",
       "Claude",
-      "GPT"
+      "GPT)"
     ]
   },
   {
@@ -251,7 +239,7 @@
       "Con IA"
     ],
     "tecnologia": [
-      "Phyton",
+      "Python",
       "Nginx"
     ],
     "año": "",
@@ -269,7 +257,7 @@
     "impactoSummary": "El impacto apunta a que el equipo de abogados pase de analizar y redactar manualmente contestaciones de demandas civiles adaptándose a las lógicas dispersas de cada juzgado, a revisar y perfeccionar borradores jurídicos consistentes en cuestión de minutos a través de un agente de inteligencia artificial entrenado a su medida.",
     "fuenteDatos": [],
     "tecnologiasUtilizadas": [
-      "Phyton",
+      "Python",
       "Nginx"
     ]
   },
@@ -294,9 +282,7 @@
     "tipoCliente": "Enterprise",
     "badges": [],
     "tecnologia": [
-      "VS Code",
       "Python",
-      "Jupyter Notebook",
       "Streamlit"
     ],
     "año": "",
@@ -314,9 +300,7 @@
     "impactoSummary": "El proyecto le permitió al cliente pasar de una intuición no verificada sobre ineficiencias en su parque eólico a una evidencia cuantificada y visual del potencial de mejora, sin necesidad de comprometer una inversión en un sistema productivo desde el primer momento. El prototipo actuó como una prueba de concepto de bajo riesgo que valida la hipótesis de negocio (el efecto estela representa una oportunidad real de optimización) y sienta las bases técnicas y de datos para una futura implementación de Machine Learning.",
     "fuenteDatos": [],
     "tecnologiasUtilizadas": [
-      "VS Code",
       "Python",
-      "Jupyter Notebook",
       "Streamlit"
     ]
   },
@@ -344,15 +328,11 @@
       "IA"
     ],
     "tecnologia": [
-      "Python 3.13",
-      "XGBoost 2.x",
+      "Python",
+      "Pandas",
+      "Machine Learning (XGBoost",
       "scikit-learn",
-      "category-encoders",
-      "SHAP",
-      "pandas",
-      "VS Code",
-      "Jupyter",
-      "Poetry"
+      "SHAP)"
     ],
     "año": "",
     "pais": "Argentina",
@@ -373,15 +353,11 @@
       "Parquet"
     ],
     "tecnologiasUtilizadas": [
-      "Python 3.13",
-      "XGBoost 2.x",
+      "Python",
+      "Pandas",
+      "Machine Learning (XGBoost",
       "scikit-learn",
-      "category-encoders",
-      "SHAP",
-      "pandas",
-      "VS Code",
-      "Jupyter",
-      "Poetry"
+      "SHAP)"
     ]
   }
 ]
