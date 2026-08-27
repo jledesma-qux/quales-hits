@@ -359,5 +359,64 @@
       "scikit-learn",
       "SHAP)"
     ]
+  },
+  {
+    "id": 8,
+    "titulo": "Evolución de Datos en Áreas de Finanzas con IA",
+    "descripcion": "Modelos de IA detectan asientos contables anómalos en el cierre mensual del P&L, reduciendo 480 hs y acelerando el cierre entre 3 y 5 días.",
+    "descripcionLargaDetalle": "Una compañía de e-commerce buscaba mayor visibilidad, agilidad y control de gestión sobre el cierre mensual del P&L, un proceso extenso y con alto volumen de información, donde resultaba difícil identificar movimientos contables anormales entre escenarios y consolidar los casos detectados con explicaciones claras para el negocio. Quales diseñó una solución de automatización con Machine Learning: los datos contables de SAP S/4 HANA se centralizan en Google BigQuery y se procesan con Python; un modelo de Isolation Forest se ejecuta cada 10 minutos sobre cada nueva versión del cierre mensual para detectar asientos anómalos según su variación respecto a períodos anteriores. Un agente de IA construido con la API de Gemini genera automáticamente un resumen de los casos detectados y lo envía por mail a los Key Users de Finanzas, mientras dashboards en Python/Plotly permiten analizar los datos anómalos por Período, Sociedad, Línea del P&L, CECO, País y Cuenta Contable. Todo el flujo se orquesta con n8n.",
+    "tags": [
+      "Automatización",
+      "Machine Learning",
+      "Detección de Anomalías",
+      "IA Generativa"
+    ],
+    "categoria": "Data IA",
+    "industria": "E-commerce",
+    "area": "Finanzas",
+    "objetivoNegocio": [
+      "Acelerar el cierre mensual",
+      "Detectar anomalías contables tempranamente",
+      "Mejorar el control de gestión financiera"
+    ],
+    "tipoSolucion": "Modelo predictivo",
+    "duracionProyecto": "",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto",
+      "IA"
+    ],
+    "tecnologia": [
+      "Google BigQuery",
+      "Python",
+      "Plotly",
+      "n8n",
+      "Gemini API",
+      "Machine Learning (Isolation Forest)"
+    ],
+    "año": "",
+    "pais": "Argentina",
+    "media": "img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-anomalias/caso-anomalias-img1.png::Volumen de anomalías detectadas por país en el análisis histórico del modelo | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-anomalias/caso-anomalias-img2.png::Seguimiento diario de anomalías detectadas por país durante el cierre | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-anomalias/caso-anomalias-img3.png::Distribución del modelo: score de anomalía de cada asiento analizado — normales en azul, anómalos en naranja",
+    "problemaTitle": "Cierre contable extenso, con anomalías difíciles de detectar",
+    "problemaItems": "Anomalías difíciles de detectar: identificar movimientos contables anormales entre escenarios del P&L era un proceso manual y complejo | Casos sin consolidar: no era posible reunir los casos detectados con explicaciones claras para el negocio | Alto volumen de información: gran nivel de apertura de datos que dificultaba el análisis manual | Cierre mensual extenso: el proceso de validación del cierre del P&L demandaba demasiado tiempo | Informes con errores: se liberaban a Key Users de distintas áreas y países reportes con información incorrecta",
+    "solucionTitle": "Automatización del cierre contable con Machine Learning y un agente de IA",
+    "solucionItems": "Centralización de datos: los datos contables de SAP S/4 HANA se consolidan en Google BigQuery (ELT) | Detección de anomalías: un modelo de Machine Learning (Isolation Forest) en Python detecta asientos anómalos en cada cierre mensual | Procesamiento automático: el proceso se ejecuta cada 10 minutos sobre cada nueva versión del cierre | Agente de IA: construido con la API de Gemini, genera y envía por mail un resumen de los casos detectados a los equipos de Finanzas | Dashboards de análisis: en Python/Plotly, permiten analizar los datos anómalos por Período, Sociedad, Línea del P&L, CECO, País y Cuenta Contable | Orquestación del flujo: todo el proceso se coordina con n8n",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "480 hs: reducción en tiempos de validación del cierre mensual | 10x: optimización del tiempo de validación de datos | 3 a 5 días: adelanto en la fecha de cierre mensual",
+    "impactoAntes": "Proceso de validación del cierre mensual extenso y manual | Dificultad para identificar movimientos contables anormales entre escenarios del P&L | Alto volumen de información con gran nivel de apertura, difícil de analizar manualmente | Informes con información incorrecta liberados a Key Users de distintas áreas y países",
+    "impactoDespues": "Cierre mensual adelantado entre 3 y 5 días | Reducción de 480 horas en tiempos de validación del cierre | Validación de datos 10 veces más rápida | Detección automática de movimientos contables anormales que antes no eran visibles para el negocio",
+    "impactoSummary": "La automatización del proceso de detección de anomalías con Machine Learning y un agente de IA redujo 480 horas en la validación del cierre mensual, aceleró el cierre entre 3 y 5 días y permitió detectar tempranamente movimientos contables anormales que antes pasaban inadvertidos para el negocio.",
+    "fuenteDatos": [
+      "SAP S/4 HANA"
+    ],
+    "tecnologiasUtilizadas": [
+      "Google BigQuery",
+      "Python",
+      "Plotly",
+      "n8n",
+      "Gemini API",
+      "Machine Learning (Isolation Forest)"
+    ]
   }
 ]
