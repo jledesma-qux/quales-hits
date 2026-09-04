@@ -418,5 +418,63 @@
       "Gemini API",
       "Machine Learning (Isolation Forest)"
     ]
+  },
+  {
+    "id": 9,
+    "titulo": "Tableros de decisión, del shipment al punto de venta",
+    "descripcion": "Suite de tableros que reconcilia tres fuentes de datos (productora, distribuidores y retail) para leer el negocio del shipment al punto de venta.",
+    "descripcionLargaDetalle": "Suite de inteligencia comercial donde el negocio opera bajo el sistema regulatorio de tres niveles de EE. UU., que separa por ley a productora, distribuidores y retailers, cada uno con sus propios sistemas de datos. La solución integra tres fuentes externas heterogéneas —COGNOS (ERP interno de la productora), IDIG (nexo distribuidores-retailers) y NielsenIQ (sell-out en el punto de venta)— sobre un pipeline en GCP: data warehouse en BigQuery, transformación por capas en Dataform e infraestructura como código en Terraform. La capa de visualización es Tableau Cloud, unificada en FIFCO Vision, un portal que da a los stakeholders un único punto de entrada. Sobre esa base corren tres tableros clave: Competitive Ranking, Monthly Business Review y Daily Shipment Report en versión mobile.",
+    "tags": [
+      "BI",
+      "Dashboard",
+      "Mobile"
+    ],
+    "categoria": "Data Fabric, Data Viz",
+    "industria": "Consumo masivo",
+    "area": "Comercial",
+    "objetivoNegocio": [
+      "Dar visibilidad unificada del negocio comercial —del shipment al punto de venta— reconciliando las tres fuentes que la regulación de tres niveles mantiene separadas (productora",
+      "distribuidores y retail)",
+      "para que los equipos comerciales",
+      "de distribución y dirección tomen decisiones más rápidas y monitoreen objetivos",
+      "incluso en el terreno",
+      "sin depender de reportes manuales cruzados entre sistemas."
+    ],
+    "tipoSolucion": "Dashboard",
+    "duracionProyecto": "3–6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [],
+    "tecnologia": [
+      "Tableau Cloud",
+      "Google BigQuery",
+      "Dataform",
+      "Terraform",
+      "Google Cloud Functions"
+    ],
+    "año": "",
+    "pais": "Estados Unidos",
+    "media": "img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-suitetableros/caso-suitetableros-img1.png::Monthly Business Review: vista ejecutiva del desempeño mensual contra proyección y año anterior | vid:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-suitetableros/caso-suitetableros-vid1.mp4::Monthly Business Review en mobile: el mismo tablero para consulta en el terreno | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-suitetableros/caso-suitetableros-img2.png::Daily Shipment Report: seguimiento de objetivos de distribución por producto | vid:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-suitetableros/caso-suitetableros-vid2.mp4::Daily Shipment Report en mobile: seguimiento en el terreno",
+    "problemaTitle": "Datos fragmentados por el modelo de tres niveles",
+    "problemaItems": "Negocio partido por regulación: el sistema de tres niveles de EE. UU. obliga a separar productora, distribuidores y retailers, cada uno con sus propios sistemas de datos | Tres fuentes heterogéneas: COGNOS (ERP interno), IDIG (distribuidores → retailers) y NielsenIQ (sell-out en el punto de venta) llegan con integraciones y formatos distintos | Reconciliación cross-vendor: sin un trabajo de unificación no había forma de leer el negocio de punta a punta, del shipment al punto de venta | Sin vista única: la información vivía dispersa entre sistemas, sin un único punto de entrada para los stakeholders",
+    "solucionTitle": "Pipeline cloud unificado y tableros en un solo portal",
+    "solucionItems": "Pipeline en GCP: data warehouse en BigQuery con transformación por capas (raw → staging → intermediate → result) en Dataform, e infraestructura como código en Terraform | Reconciliación de tres fuentes: unificación de COGNOS, IDIG y NielsenIQ en un modelo que lee el negocio de punta a punta | Competitive Ranking: posicionamiento de la cartera frente a la competencia con dato de punto de venta de todo EE. UU. | Monthly Business Review: vista ejecutiva del funnel (shipment → depletion → sell-out) con cascada de aporte por Brand Family, contra proyección y año anterior | Daily Shipment Report (mobile): seguimiento diario de objetivos de distribución optimizado para el terreno | Portal de Tableros: que embebe los tableros de Tableau y da un único punto de entrada a todos los stakeholders",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "9: Tableros en producción | 52: Usuarios activos | 3: Fuentes de datos reconciliadas",
+    "impactoAntes": "Datos fragmentados entre COGNOS, IDIG y NielsenIQ, sin un modelo que los reconcilie | Sin lectura de punta a punta del negocio, del shipment al punto de venta | Información dispersa entre sistemas, sin un punto de entrada único para los stakeholders",
+    "impactoDespues": "Tres fuentes reconciliadas en un modelo único sobre BigQuery | Lectura completa del funnel comercial, del shipment al sell-out | 9 tableros en un solo portal, consultados por 52 usuarios activos",
+    "impactoSummary": "La suite consolidó la inteligencia comercial de la compañía en una fuente única, con 9 tableros en producción y 52 usuarios activos entre equipos comerciales, de distribución y dirección, incluyendo versiones mobile para consulta en el terreno.",
+    "fuenteDatos": [
+      "COGNOS (ERP IBM)",
+      "IDIG",
+      "NielsenIQ"
+    ],
+    "tecnologiasUtilizadas": [
+      "Tableau Cloud",
+      "Google BigQuery",
+      "Dataform",
+      "Terraform",
+      "Google Cloud Functions"
+    ]
   }
 ]
