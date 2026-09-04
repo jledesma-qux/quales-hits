@@ -305,6 +305,62 @@
     ]
   },
   {
+    "id": 7,
+    "titulo": "Modelo predictivo de Turnover",
+    "descripcion": "Modelo predictivo que identifica colaboradores en riesgo de renuncia",
+    "descripcionLargaDetalle": "La compañía enfrentaba una elevada rotatividad de personal en sus Centros de Distribución, afectando el cumplimiento de las metas de Shipping en toda la cadena (recepción, almacenaje, picking, embalaje, transporte y entrega). Se desarrolló un modelo predictivo de Machine Learning para anticipar qué colaboradores tenían alta probabilidad de renuncia, junto con un dashboard operativo que prioriza casos por sitio, proceso y líder crítico. El proyecto cubrió las operaciones de Fulfillment y Transportation en Brasil y México.",
+    "tags": [
+      "People Analytics",
+      "Machine Learning"
+    ],
+    "categoria": "Data IA",
+    "industria": "E-commerce",
+    "area": "Recursos Humanos",
+    "objetivoNegocio": [
+      "Comprender los patrones de comportamiento que conducen a la renuncia de los empleados de los Centros de Distribución",
+      "identificar a las personas en riesgo con valor para la compañía y generar planes de acción para retenerlas"
+    ],
+    "tipoSolucion": "Modelo predictivo",
+    "duracionProyecto": "3-6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto",
+      "IA"
+    ],
+    "tecnologia": [
+      "Python",
+      "Pandas",
+      "Machine Learning (XGBoost",
+      "scikit-learn",
+      "SHAP)"
+    ],
+    "año": "",
+    "pais": "Argentina",
+    "media": "img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-turnover/caso-turnover-img1.png::Vista \"Casos\": 5.633 casos con acción requerida priorizados por nivel de riesgo y probabilidad de renuncia, con filtros por país, site, líder, área y proceso | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-turnover/caso-turnover-img2.png::Vista \"Overall\": ranking de sites, procesos y líderes con mayor criticidad de rotación, y desglose de riesgo por puesto",
+    "problemaTitle": "Rotatividad elevada en toda la operación de Shipping",
+    "problemaItems": "Alcance operativo: la rotatividad afecta todo el proceso —recepción, almacenaje, picking, embalaje, transporte y entrega— dentro de los Centros de Distribución | Impacto en metas: la alta rotación compromete el cumplimiento de todas las metas de Shipping | Cobertura geográfica: el problema se extiende a las operaciones de Fulfillment y Transportation en Brasil y México | Datos distorsionados: el ausentismo recurrente derivaba en despidos masivos, sin distinguir qué bajas eran en realidad abandonos voluntarios de empleo | Falta de accionabilidad: los dashboards mostraban el riesgo, pero no qué plan de acción ejecutar en cada caso | Uso de IA sin criterio: sin un marco de gobernanza, los insights del modelo podían derivar en conclusiones erróneas y decisiones graves",
+    "solucionTitle": "Modelo predictivo de turnover con dashboard de riesgo",
+    "solucionItems": "Feature engineering: mapeo, limpieza y construcción de variables a partir de los datos de colaboradores, con análisis de correlación con la variable objetivo | Modelo predictivo (v1): desarrollo de un modelo de Machine Learning para estimar la probabilidad de renuncia por colaborador | Interpretabilidad: uso de shapley values para explicar los factores que impulsan el riesgo de cada caso | Segmentación de riesgo: clasificación de colaboradores en riesgo Alto/Medio, distinguiendo casos \"Not Regrettable\" y \"Falso Positivo\" | Reclasificación de turnover: creación de la categoría \"abandono de empleo\" para separar renuncias voluntarias de despidos reales, corrigiendo la distorsión de los datos | Modelo predictivo de ausentismo: anticipa el ausentismo con dos semanas de antelación en Brasil y México, atacando una de las causas raíz de la rotación | Agente de IA (RAG): sugiere planes de acción concretos apoyado en una base de conocimiento de planes previos y resultados de análisis | Gobernanza de IA: marco de validación de los insights antes de accionarlos, reduciendo el retrabajo por análisis incorrectos",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "USD 540.000: impacto anual proyectado | 15: colaboradores retenidos por mes | 70-72%: precisión predictiva (México) | 40%: de los \"despidos\" eran en realidad abandonos de empleo",
+    "impactoAntes": "Sin visibilidad de qué sites, procesos o líderes concentraban el mayor riesgo de rotatividad | Sin capacidad de anticipar qué colaboradores tenían alta probabilidad de renuncia | Sin criterio para diferenciar casos que realmente requerían retención de aquellos que no | Sin patrones claros sobre qué llevaba a la renuncia de empleados en los Centros de Distribución",
+    "impactoDespues": "Identificación de sites, procesos y líderes críticos con mayor criticidad de rotación | 5.633 casos con acción requerida detectados y priorizados por nivel de riesgo (Alto/Medio) y probabilidad | Modelo con precisión predictiva de 70-72% en México y 65-70% en Brasil | Agente de IA (RAG) que sugiere planes de acción, reemplazando el uso manual de dashboards, con gobernanza activa que valida los insights | Ahorro anual proyectado de USD 540.000 (15 colaboradores retenidos/mes, costo de reemplazo USD 3.000, sobre una dotación de 60.000 empleados en Shipping)",
+    "impactoSummary": "El modelo permitió pasar de una gestión reactiva de la rotatividad a una identificación proactiva de colaboradores en riesgo, evolucionando hacia un agente de IA con gobernanza activa que sugiere planes de acción y valida los insights antes de accionarlos. Con una retención estimada de 15 colaboradores por mes y una precisión predictiva de 70-72% en México y 65-70% en Brasil, el proyecto proyecta un ahorro anual de USD 540.000 sobre una dotación de 60.000 empleados en Shipping.",
+    "fuenteDatos": [
+      "SQL",
+      "BigQuery",
+      "Parquet"
+    ],
+    "tecnologiasUtilizadas": [
+      "Python",
+      "Pandas",
+      "Machine Learning (XGBoost",
+      "scikit-learn",
+      "SHAP)"
+    ]
+  },
+  {
     "id": 8,
     "titulo": "Evolución de Datos en Áreas de Finanzas con IA",
     "descripcion": "Modelos de IA detectan asientos contables anómalos en el cierre mensual del P&L, reduciendo 480 hs y acelerando el cierre entre 3 y 5 días.",
