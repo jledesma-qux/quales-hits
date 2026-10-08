@@ -476,5 +476,402 @@
       "Terraform",
       "Google Cloud Functions"
     ]
+  },
+  {
+    "id": 10,
+    "titulo": "Logística en Agro",
+    "descripcion": "Soporte BI y Gobierno: Centralización analítica en Power BI para el control integral de cupos, fletes a puerto y combustibles, unificando ERP, Excel y datos de ARCA.",
+    "descripcionLargaDetalle": "Reestructuración del tablero logístico de una agroexportadora líder. Centraliza la información dispersa entre planillas Excel, ERP y ARCA/AFIP en un modelo analítico modular en Power BI para optimizar cupos, fletes y combustibles.",
+    "tags": [
+      "Business Intelligence",
+      "Logística"
+    ],
+    "categoria": "Data Strategy & Viz",
+    "industria": "Agro",
+    "area": "Logística, Operaciones",
+    "objetivoNegocio": [
+      "Centralización de información",
+      "Eficiencia operativa",
+      "Visibilidad de costos"
+    ],
+    "tipoSolucion": "Dashboard",
+    "duracionProyecto": "3–6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Time & Material"
+    ],
+    "tecnologia": [
+      "Power BI",
+      "SQL",
+      "SharePoint"
+    ],
+    "año": "",
+    "pais": "Argentina",
+    "media": "https://drive.google.com/drive/folders/1MrRWpfG_Y14nq62Cecq64C0HyeoV3WCQ",
+    "problemaTitle": "Desafío Operativo y Dispersión de Datos",
+    "problemaItems": "Información logística dispersa en planillas Excel, sistemas ERP y comprobantes de ARCA/AFIP | Falta de visibilidad unificada del cumplimiento de cupos (productor vs. exportador) | Dificultad para calcular con precisión costos de fletes (camión y tren a puerto) y márgenes por tonelada | Falta de trazabilidad integral sobre stock, órdenes de compra y precio medio de combustibles",
+    "solucionTitle": "Módulos Analíticos e Integración de Datos",
+    "solucionItems": "Módulo de Cupos: seguimiento de cumplimiento (soja, trigo, maíz) con perspectiva dual productor/exportador | Módulo de Fletes: análisis de cumplimiento por segmento de cliente y cálculo de costos/márgenes de transporte a puerto | Módulo de Combustibles: control de stock, órdenes de compra y evolución de precios medios | Arquitectura escalable: flujos en Power BI desde SQL Server, Oracle y SharePoint, alineados con la migración a Data Lake",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "87%: Cumplimiento en asignación de cupos | '3: Módulos analíticos integrados (Cupos, Fletes, Combustibles) | '100%: Centralización de datos dispersos (Excel, ERP, ARCA)",
+    "impactoAntes": "Operación logística fragmentada entre Excel y ERP sin visión unificada | Cálculo manual de fletes y márgenes por tonelada sin trazabilidad | Falta de control centralizado sobre stock de combustibles",
+    "impactoDespues": "Consolidación de toda la analítica logística en una plataforma única de Power BI | Visibilidad clara del margen operativo y costos de transporte a puerto | Base analítica robusta lista para la futura migración a Data Lake",
+    "impactoSummary": "Quales transformó la analítica logística del cliente unificando ERP, Excel y datos de ARCA en un tablero modular de Power BI que potencia el control de cupos, fletes y combustibles.",
+    "fuenteDatos": [
+      "Excel (SharePoint)",
+      "SQL Server",
+      "Oracle",
+      "ARCA (AFIP)",
+      "Power BI Dataflows"
+    ],
+    "tecnologiasUtilizadas": [
+      "Power BI",
+      "SQL",
+      "SharePoint"
+    ]
+  },
+  {
+    "id": 11,
+    "titulo": "Gobierno de datos y gestión eficiente de stock",
+    "descripcion": "Automatización del control de inventario y gobierno de datos en SAP para garantizar visibilidad en tiempo real y reducir riesgos operativos.",
+    "descripcionLargaDetalle": "Transformación del modelo de gestión de inventarios y datos maestros en la industria farmacéutica, migrando de controles manuales en Excel a un ecosistema centralizado en SAP y Snowflake con monitoreo automático de calidad de datos en Power BI.",
+    "tags": [
+      "Gobierno de datos",
+      "Power BI"
+    ],
+    "categoria": "Data Strategy",
+    "industria": "Salud / Farmacología",
+    "area": "Operaciones",
+    "objetivoNegocio": [
+      "Automatización de procesos",
+      "Visibilidad en tiempo real",
+      "Calidad de datos",
+      "Optimización de inventario"
+    ],
+    "tipoSolucion": "Dashboard",
+    "duracionProyecto": "3–6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Caso de éxito"
+    ],
+    "tecnologia": [
+      "SAP",
+      "Snowflake",
+      "Power BI",
+      "Airflow"
+    ],
+    "año": "",
+    "pais": "Suecia",
+    "media": "",
+    "problemaTitle": "Desafíos operativos y riesgos de calidad de datos",
+    "problemaItems": "Trabajo manual exhaustivo en planillas de Excel con alto consumo de horas-hombre | Ceguera operativa por falta de visibilidad en tiempo real de órdenes e inventario | Discrepancias críticas entre el stock físico y los registros en SAP | Riesgo de pérdida de mercadería y vencimientos por falta de proyecciones | Vulnerabilidad legal y de privacidad por falta de gobierno en datos sensibles",
+    "solucionTitle": "Gobierno de datos, estandarización y tableros automatizados",
+    "solucionItems": "Definición de roles clave de gobierno (Data Owner y Data Custodian) para centralizar la responsabilidad sobre el dato | Implementación de una Convención de Nombres estandarizada para garantizar consistencia en los modelos de Power BI | Creación de tableros interactivos para la gestión y validación de inventario en tiempo real | Sistema de alertas automáticas clasificadas por completitud, exactitud, integridad y privacidad",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "+520: Reglas de calidad activas | 100%: Confiabilidad en reportes de Power BI | '0: Redundancia en la validación de datos",
+    "impactoAntes": "Gestión basada en silos y archivos Excel locales con reportes contradictorios | Conocimiento frágil dependiente de la memoria de las personas | Detección tardía de inconsistencias directamente en reportes gerenciales | Riesgo continuo de vencimiento de productos y sanciones por datos no gobernados",
+    "impactoDespues": "Detección preventiva de errores semanalmente antes de llegar a los tableros directivos | Proceso de validación única del dato con consumo múltiple centralizado | Reportes 100% confiables y automatizados para la toma de decisiones | Reducción drástica de horas-hombre dedicadas a la limpieza manual de datos",
+    "impactoSummary": "Se transformó un esquema de datos fragmentado en un modelo gobernado y automatizado, reduciendo riesgos operativos en la industria farmacéutica y garantizando la confiabilidad total de la información para la toma de decisiones.",
+    "fuenteDatos": [
+      "SAP",
+      "Snowflake"
+    ],
+    "tecnologiasUtilizadas": [
+      "SAP",
+      "Snowflake",
+      "Power BI",
+      "Airflow"
+    ]
+  },
+  {
+    "id": 12,
+    "titulo": "People Analytics: Ecosistema BI",
+    "descripcion": "Ecosistema integral de BI y analítica descriptiva para automatizar nómina, compensaciones, evaluaciones de desempeño y atención al colaborador.",
+    "descripcionLargaDetalle": "Plataforma unificada de Business Intelligence y automatización de procesos para el área de People. Integra un sugeridor de notas de evaluación de desempeño que actúa como auditoría sobre las calificaciones asignadas por los líderes cruzando métricas objetivas (productividad, ausentismo, presencialidad), la automatización completa del reporte de nómina y capas jerárquicas disponible el día 5 del mes, un motor de cálculo de compensaciones y bonos con tasa de error cero, y micro-agentes con workflows de control de calidad de datos que responden consultas de asistencia en menos de un minuto.",
+    "tags": [
+      "People Analytics",
+      "Business Intelligence"
+    ],
+    "categoria": "Data Viz",
+    "industria": "E-commerce",
+    "area": "RRHH, Finanzas",
+    "objetivoNegocio": [
+      "Automatización de procesos",
+      "Eliminación de errores operativos",
+      "Alineación de desempeño"
+    ],
+    "tipoSolucion": "Dashboard",
+    "duracionProyecto": "+6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto",
+      "Innovación"
+    ],
+    "tecnologia": [
+      "Tableau",
+      "BigQuery",
+      "Dataflow",
+      "Python",
+      "Verdiflow"
+    ],
+    "año": "",
+    "pais": "Argentina",
+    "media": "",
+    "problemaTitle": "Procesos manuales de alto riesgo, inconsistencias evaluativas y saturación operativa",
+    "problemaItems": "Inconsistencias y falta de criterios homogéneos en evaluaciones anuales de desempeño entre líderes y métricas reales. | Elaboración manual de nómina y capas jerárquicas que demandaba entre 10 y 12 días mensuales a 2 personas. | Procesos manuales de compensación con riesgo de errores financieros masivos (como un evento previo que afectó a 100 colaboradores). | Consultas recurrentes sobre presencialidad y fallas de origen en datos que saturaban a los canales de People.",
+    "solucionTitle": "Ecosistema automatizado de BI, motor de auditoría evaluativa y micro-agentes",
+    "solucionItems": "Sugeridor de notas de desempeño basado en datos objetivos (productividad, ausentismo, presencialidad) como auditoría para el líder. | Dashboard de nómina y estructura automatizado al día 5 del mes, con visibilidad de capas y tramos de control. | Automatización integral de revisiones salariales y simulación de bonos anuales y de largo plazo sin errores. | Workflows en Verdiflow para validación diaria de datos de origen y mini-agente de respuesta inmediata para presencialidad.",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "0: Errores en procesamiento de compensaciones | 10-12 días: Ahorro de trabajo manual por mes | < 1 min: Tiempo de respuesta en presencialidad (antes días) | Day 5: Disponibilidad de nómina y estructura",
+    "impactoAntes": "10 a 12 días dedicados manualmente por 2 personas para consolidar la nómina con capas jerárquicas. | Errores manuales en bonos acumulativos con impactos de cientos de miles de dólares. | Evaluaciones anuales desconectadas de las métricas reales de productividad y ausentismo del colaborador. | Tiempos de respuesta de varios días para resolver consultas de registro de asistencia.",
+    "impactoDespues": "Nómina y mapa de estructura disponibles en dashboard sin esfuerzo manual el día 5 de cada mes. | Proceso de compensaciones 100% automatizado con tasa de error cero. | Alineación objetiva entre las evaluaciones asignadas por líderes y el rendimiento real de la persona. | Resoluciones automatizadas de presencialidad en menos de un minuto.",
+    "impactoSummary": "Implementación de un ecosistema analítico centralizado que liberó capacidad operativa, garantizó la precisión financiera en compensaciones y aportó transparencia y rigor a las evaluaciones de desempeño organizacional.",
+    "fuenteDatos": [
+      "BigQuery",
+      "Dataflow",
+      "Sistemas de Asistencia",
+      "Software de Nómina"
+    ],
+    "tecnologiasUtilizadas": [
+      "Tableau",
+      "BigQuery",
+      "Dataflow",
+      "Python",
+      "Verdiflow"
+    ]
+  },
+  {
+    "id": 13,
+    "titulo": "Analítica Unificada de Cadena de Valor y Market Share",
+    "descripcion": "Unificación de datos de ERP, distribuidores y retail en 15 tableros analíticos para medir promociones y optimizar el equipo comercial.",
+    "descripcionLargaDetalle": "Implementación de una plataforma analítica unificada para una compañía líder en el sector de bebidas, integrando silos de datos provenientes del ERP interno, la red de distribuidores y mediciones de mercado (Nielsen). La solución unificó la trazabilidad de campañas comerciales y habilitó 15 tableros estratégicos para optimizar la gestión del equipo de ventas y la toma de decisiones ejecutivas.",
+    "tags": [
+      "BI",
+      "Infraestructura como Código"
+    ],
+    "categoria": "Data Fabric, Data Viz",
+    "industria": "Consumo masivo",
+    "area": "Comercial, Finanzas, Operaciones",
+    "objetivoNegocio": [
+      "Visibilidad de cadena de valor",
+      "Medición de campañas",
+      "Optimización operacional"
+    ],
+    "tipoSolucion": "Data warehouse / data lake",
+    "duracionProyecto": "+6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "IaC",
+      "Data Quality"
+    ],
+    "tecnologia": [
+      "Dataform",
+      "GitHub",
+      "Terraform",
+      "Tableau",
+      "GCP"
+    ],
+    "año": "",
+    "pais": "Estados Unidos",
+    "media": "",
+    "problemaTitle": "Tres silos de datos e imposibilidad de medir el retorno promocional",
+    "problemaItems": "Restricciones regulatorias del sector de bebidas que obligaron a descentralizar la operación en entidades independientes | Inexistencia de visibilidad punta a punta para medir el impacto de promociones desde la producción hasta el punto de venta | Proceso analítico completamente manual para consolidar datos de ERP, distribuidores y mercado externo (Nielsen) | Alta rotación de personal que dificultaba la continuidad del conocimiento sobre las reglas de negocio y modelos",
+    "solucionTitle": "Arquitectura moderna de datos unificada con Infraestructura como Código",
+    "solucionItems": "Integración automatizada de los 3 silos de datos (ERP interno, distribuidores y datos de mercado Nielsen) en un repositorio unificado | Despliegue de 15 tableros analíticos en Tableau accesibles desde tablets con filtros de perfilación por rol y área | Implementación de arquitectura ágil basada en Dataform, GitHub y Terraform para automatización y portabilidad multicloud | Sistema de Data Quality con alertas de integridad referencial, chequéos contra maestros y un tablero de precisión de modelos | Tablero de tracking de ejecución automatizado para optimizar la planificación de ventas de campo",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "15: Tableros analíticos que reemplazaron reportes manuales | -50%: Reducción del equipo de ventas requerida tras la reestructuración basada en datos | 100%: Trazabilidad automatizada en la cadena de valor",
+    "impactoAntes": "Proceso de integración y reporte de ventas realizado manualmente de punta a punta | Imposibilidad de medir la efectividad de promociones comerciales en la cadena de distribución | El equipo de Field Sales dedicaba hasta 1 mes a planificar manualmente las asignaciones de venta",
+    "impactoDespues": "Trazabilidad completa desde la demanda proyectada y producción hasta distribuidores y contratos con cadenas | Automatización de la planificación comercial, liberando tiempo para concentrarse en la ejecución en el punto de venta | Reemplazo de reportes operacionales fragmentados por 15 tableros integrados de consumo ejecutivo | Modelo de arquitectura estandarizado y portable, listo para servir como blueprint en migraciones corporativas",
+    "impactoSummary": "La unificación de los silos de datos permitió integrar toda la cadena de valor y medir el retorno real de las promociones. Gracias a la automatización de la arquitectura y la disponibilización de tableros estratégicos, la empresa optimizó la estructura de su equipo comercial y consolidó un modelo de datos replicable a escala corporativa.",
+    "fuenteDatos": [
+      "ERP interno",
+      "Datos de distribuidores",
+      "Nielsen / Retail"
+    ],
+    "tecnologiasUtilizadas": [
+      "Dataform",
+      "GitHub",
+      "Terraform",
+      "Tableau",
+      "GCP"
+    ]
+  },
+  {
+    "id": 14,
+    "titulo": "Gobernanza y Calidad de Datos en Industria Farma",
+    "descripcion": "Diseño de marco de gobierno de datos, roles Data Owner/Custodian y motor de alertas para asegurar cumplimiento normativo y calidad de datos.",
+    "descripcionLargaDetalle": "Implementación integral de una estrategia de Data Governance orientada a la industria farmacéutica. Se formalizaron roles de negocio y técnicos (Data Owner y Data Custodian), se definió un marco normativo adaptado al manejo de datos sensibles y se desplegó un tablero de monitoreo de alertas de calidad y privacidad.",
+    "tags": [
+      "Data Governance",
+      "SAP"
+    ],
+    "categoria": "Data Strategy",
+    "industria": "Salud / Farmacología",
+    "area": "Operaciones",
+    "objetivoNegocio": [
+      "Cumplimiento normativo",
+      "Gobierno de datos",
+      "Eficiencia operativa",
+      "Mitigación de riesgos"
+    ],
+    "tipoSolucion": "Dashboard",
+    "duracionProyecto": "3–6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Farma",
+      "Privacy",
+      "Data Quality"
+    ],
+    "tecnologia": [
+      "Snowflake",
+      "SAP",
+      "Power BI",
+      "Looker"
+    ],
+    "año": "",
+    "pais": "Argentina",
+    "media": "",
+    "problemaTitle": "Desafíos de gobernanza, desorden operativo y regulación sensible",
+    "problemaItems": "Brecha entre teoría y práctica: la operatividad diaria consume recursos impidiendo procesos formales | Conocimiento tácito e informal: la información crítica reside solo en las personas, generando riesgo de pérdida y falta de estandarización | Desorden de datos y costos ocultos: información duplicada o inútil que llena servidores y obliga a reprocesar constantemente | Exigencia de cumplimiento normativo: regulación estricta sobre datos sensibles, patologías y prescripciones que exige anonimización y clasificación para evitar sanciones | Ambigüedad semántica: un mismo concepto o indicador cuenta con definiciones y reglas de negocio superpuestas según cada área",
+    "solucionTitle": "Estructuración del marco de gobierno, asignación de roles y control automatizado",
+    "solucionItems": "Evaluación de madurez y roadmap adaptado: diagnóstico inicial enfocado en procesos críticos y normativos | Definición de roles y responsabilidades: establecimiento de Data Owners (líderes de negocio) y Data Custodians (expertos técnicos en SAP/Snowflake) | Glosario maestro e inventario de términos: mesas interdisciplinarias para definir conceptos, KPIs y reglas de negocio únicas | Políticas marco y específicas: documentación flexible orientada a privacidad, seguridad y calidad de datos | Dashboard de alertas automatizado: panel de control categorizado por Completitud, Exactitud, Integridad y Privacidad con fecha de detección",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "100%: Procesos críticos documentados e inventariados | '100%: Anonimización y cumplimiento normativo en datos sensibles | '-40%: Tiempo de reprocesamiento de datos | '4: Dimensiones de calidad monitoreadas en tiempo real",
+    "impactoAntes": "Información crítica concentrada en conocimiento tácito | Falta de estandarización en la definición de KPIs entre áreas | Riesgos legales por manejo no regulado de datos de patologías y prescripciones | Servidores con acumulación de datos vacíos, nulos e inútiles",
+    "impactoDespues": "Ciclo de vida de datos documentado y estandarizado con roles Data Owner y Custodian | Glosario único de términos e indicadores alineado a toda la organización | Monitoreo proactivo de alertas de privacidad y calidad | Reducción de costos de infraestructura y retrabajo operativo",
+    "impactoSummary": "Se transformó la gestión de datos de la organización, pasando de procesos informales a un marco estructurado con gobernanza activa. La asignación clara de roles junto con el monitoreo automatizado de calidad y privacidad garantizó el pleno cumplimiento normativo en una industria altamente regulada y optimizó la eficiencia operativa.",
+    "fuenteDatos": [
+      "SAP",
+      "Snowflake",
+      "Google Docs"
+    ],
+    "tecnologiasUtilizadas": [
+      "Snowflake",
+      "SAP",
+      "Power BI",
+      "Looker"
+    ]
+  },
+  {
+    "id": 15,
+    "titulo": "Portal de Agentes AI Corporativo",
+    "descripcion": "Plataforma web privada y gobernada para crear, publicar y consumir agentes de IA adaptados al contexto de la organización e integrados a ERP/CRM.",
+    "descripcionLargaDetalle": "Plataforma web privada y gobernada que permite a la organización crear, publicar y consumir agentes de IA adaptados a su propio contexto y know-how. Ofrece un Agents Store centralizado, autenticación SSO corporativa, panel de administración para gestión de accesos y conectividad directa con sistemas propios (ERP, CRM) para ejecutar tareas operativas, asegurando trazabilidad end-to-end y control de costos.",
+    "tags": [
+      "IA Generativa",
+      "Seguridad Corporativa"
+    ],
+    "categoria": "Data IA",
+    "industria": "Servicios",
+    "area": "Sistemas, Legal, Operaciones",
+    "objetivoNegocio": [
+      "Gobernanza de IA",
+      "Reducción de costos",
+      "Retención de conocimiento",
+      "Automatización de procesos"
+    ],
+    "tipoSolucion": "Agente / Asistente de IA",
+    "duracionProyecto": "3–6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "IA Generativa",
+      "Seguridad & Gobernanza",
+      "Integración ERP/CRM"
+    ],
+    "tecnologia": [
+      "LLMs",
+      "Python",
+      "LangChain",
+      "OAuth / SSO",
+      "APIs REST"
+    ],
+    "año": "",
+    "pais": "Argentina",
+    "media": "",
+    "problemaTitle": "Riesgos de Seguridad, Pérdida de Know-How y Costos Fragmentados",
+    "problemaItems": "Uso no regulado de herramientas públicas de IA con datos confidenciales | Pérdida de conocimiento clave por rotación de personal y cultura reactiva | Costos descontrolados y falta de trazabilidad en decenas de suscripciones de IA",
+    "solucionTitle": "Plataforma Privada y Gobernada de Agentes de IA",
+    "solucionItems": "Desarrollo de un Portal Web privado con Agents Store interno para crear, publicar y reutilizar agentes | Integración directa con ERP y CRM para ejecutar acciones y tareas sobre sistemas propios | Implementación de SSO corporativo, panel de administración de accesos y trazabilidad end-to-end de tokens, documentos y consultas",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "100%: Interacciones e insumos auditados | '0: Filtraciones de datos confidenciales | 1: Canal unificado de IA corporativa",
+    "impactoAntes": "Fuga potencial de información confidencial en modelos públicos e incapacidad de auditar uso | Know-how humano vulnerable a la rotación y bloqueo preventivo de IA por parte de Legales | Múltiples suscripciones de IA fragmentadas y sin visibilidad de gasto por área",
+    "impactoDespues": "Entorno 100% privado y gobernado con auditoría detallada de preguntas, documentos y costos | Capitalización del saber-hacer en agentes reutilizables 24/7 sin riesgo de filtraciones | Centralización en un solo canal de IA con control de presupuesto y consumo en tiempo real",
+    "impactoSummary": "El Portal de Agentes AI transformó la adopción de IA en un activo corporativo seguro y escalable, eliminando riesgos de seguridad y optimizando costos al centralizar el conocimiento en agentes gobernados e integrados a los sistemas de la empresa.",
+    "fuenteDatos": [
+      "ERP",
+      "CRM",
+      "Documentación Interna",
+      "Bases de Datos Corporativas"
+    ],
+    "tecnologiasUtilizadas": [
+      "LLMs",
+      "Python",
+      "LangChain",
+      "OAuth / SSO",
+      "APIs REST"
+    ]
+  },
+  {
+    "id": 18,
+    "titulo": "Trazabilidad Integral de la Cadena de Suministro",
+    "descripcion": "Integración de datos de producción, demanda y distribución para visibilidad end-to-end de la cadena logística.",
+    "descripcionLargaDetalle": "Unificación de información proveniente de producción, distribuidores y contratos de cadenas comerciales para garantizar trazabilidad operacional y flexibilidad ante migraciones de infraestructura.",
+    "tags": [
+      "Trazabilidad",
+      "Data Architecture"
+    ],
+    "categoria": "Data Fabric",
+    "industria": "Consumo masivo",
+    "area": "Logística",
+    "objetivoNegocio": [
+      "Optimización de cadena de suministro",
+      "Trazabilidad operativa",
+      "Modernización de arquitectura"
+    ],
+    "tipoSolucion": "Data pipeline",
+    "duracionProyecto": "3–6 meses",
+    "tipoCliente": "Enterprise",
+    "badges": [
+      "Alto Impacto",
+      "Trazabilidad"
+    ],
+    "tecnologia": [
+      "GCP",
+      "Dataform",
+      "GitHub",
+      "Terraform",
+      "Tableau"
+    ],
+    "año": "",
+    "pais": "Estados Unidos",
+    "media": "",
+    "problemaTitle": "Fragmentación en la cadena de distribución y falta de trazabilidad",
+    "problemaItems": "Desconexión entre la demanda proyectada, la producción y el despacho final | Procesos manuales para rastrear la llegada de productos a distribuidores | Dificultad para evaluar el cumplimiento de contratos en el punto de venta | Arquitectura rígida con riesgo de dependencia ante futuras migraciones tecnológicas",
+    "solucionTitle": "Arquitectura de datos ágil y pipeline end-to-end",
+    "solucionItems": "Integración automatizada del ERP interno con los datos de distribuidores y cadenas | Modelado de datos flexible implementado con Dataform y GitHub | Despliegue de infraestructura como código mediante Terraform para garantizar portabilidad multicloud | Desarrollo de alertas automatizadas de calidad de datos y chequeos de integridad referencial",
+    "cronogramaTitle": "",
+    "cronogramaMedia": "",
+    "impactoKpis": "100%: Trazabilidad end-to-end de demanda y despacho | '0: Procesos manuales en la integración de distribuidores | '100%: Portabilidad de infraestructura garantizada ante migraciones",
+    "impactoAntes": "Falta de visibilidad sobre el estado de la cadena logística y dependencia de consolidaciones manuales.",
+    "impactoDespues": "Visibilidad completa en tiempo real desde la producción hasta el distribuidor final con infraestructura fácilmente replicable.",
+    "impactoSummary": "Se logró visibilidad punta a punta en la cadena de suministro mediante una arquitectura moderna de datos, automatizando controles de calidad e infraestructura.",
+    "fuenteDatos": [
+      "ERP Interno",
+      "Sistemas de Distribuidores",
+      "Contratos Cadenas"
+    ],
+    "tecnologiasUtilizadas": [
+      "GCP",
+      "Dataform",
+      "GitHub",
+      "Terraform",
+      "Tableau"
+    ]
   }
 ]
