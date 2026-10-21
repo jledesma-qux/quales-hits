@@ -27,7 +27,7 @@
   .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
-  html, body { overflow-x: hidden; max-width: 100%; }
+  html, body { overflow-x: hidden; overflow-x: clip; max-width: 100%; }
   @keyframes qs-spin { to { transform: rotate(360deg); } }
   @media (max-width: 768px) {
     .qs-header, .qs-footer { padding: 16px 20px !important; }
@@ -44,6 +44,7 @@
     .qs-impacto-header, .qs-impacto-row { grid-template-columns: 1fr !important; gap: 4px !important; text-align: left; }
     .qs-carousel { aspect-ratio: 4/3 !important; }
     .qs-carousel-arrow { width: 48px !important; height: 48px !important; }
+    .qs-carousel-expand { min-height: 44px; }
     .qs-chip { min-height: 44px; display: inline-flex; align-items: center; }
     .qs-touch { min-height: 44px !important; }
     .qs-filter-option { min-height: 44px; }
@@ -75,8 +76,8 @@
         <img alt="Logo" src="https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/assets/logo-quales.png" style="height:100%;width:100%;object-fit:contain;object-position:left;">
       </button>
       <nav style="display:flex;gap:32px;align-items:center;font-size:16px;font-weight:500;letter-spacing:-0.08px;">
-        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:16px;font-weight:500;">Home</button>
-        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:16px;font-weight:500;">Hits</button>
+        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:20px;font-weight:600;">Home</button>
+        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:20px;font-weight:600;">Hits</button>
       </nav>
     </div>
   </header>
@@ -153,8 +154,8 @@
         <img alt="Logo" src="https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/assets/logo-quales.png" style="height:100%;width:100%;object-fit:contain;object-position:left;">
       </button>
       <nav style="display:flex;gap:32px;align-items:center;font-size:16px;font-weight:500;">
-        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:16px;font-weight:500;">Home</button>
-        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:16px;font-weight:500;">Hits</button>
+        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:20px;font-weight:600;">Home</button>
+        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:20px;font-weight:600;">Hits</button>
       </nav>
     </div>
   </header>
@@ -275,13 +276,13 @@
         <img alt="Logo" src="https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/assets/logo-quales.png" style="height:100%;width:100%;object-fit:contain;object-position:left;">
       </button>
       <nav style="display:flex;gap:32px;align-items:center;font-size:16px;font-weight:500;">
-        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:16px;font-weight:500;">Home</button>
-        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:16px;font-weight:500;">Hits</button>
+        <button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;color:#003366;font-family:inherit;font-size:20px;font-weight:600;">Home</button>
+        <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;color:#619b5c;font-family:inherit;font-size:20px;font-weight:600;">Hits</button>
       </nav>
     </div>
   </header>
 
-  <div style="width:100%;border-bottom:1px solid rgba(0,0,0,0.1);">
+  <div class="qs-back-bar" style="position:sticky;top:0;z-index:30;width:100%;background:#fff;border-bottom:1px solid rgba(0,0,0,0.1);">
     <div style="padding:16px 64px;">
       <button onClick="{{ goCasos }}" style="border:none;background:none;cursor:pointer;font-family:inherit;font-weight:500;font-size:18px;color:rgba(0,0,0,0.55);letter-spacing:-0.09px;">← Volver a Hits</button>
     </div>
@@ -443,6 +444,10 @@
             </sc-if>
             <sc-if value="{{ detailMediaIsImage }}" hint-placeholder-val="{{ true }}">
               <img alt="" ref="{{ detailMediaRef }}" onClick="{{ detailImageOnClick }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:16px;cursor:pointer;">
+              <button onClick="{{ detailImageOnClick }}" class="qs-carousel-expand" aria-label="Ampliar imagen" title="Ampliar imagen" style="position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(0,0,0,0.55);border:none;color:#fff;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;z-index:2;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                Ampliar
+              </button>
             </sc-if>
             <sc-if value="{{ detailShowMediaNav }}" hint-placeholder-val="{{ false }}">
               <button onClick="{{ detailPrevMedia }}" class="qs-carousel-arrow" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;z-index:2;">‹</button>
@@ -478,7 +483,12 @@
       <button onClick="{{ lightboxNextClick }}" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:102;">›</button>
     </sc-if>
     <sc-if value="{{ lightboxHasUrl }}" hint-placeholder-val="{{ false }}">
-      <img alt="" ref="{{ lightboxImgRef }}" onClick="{{ stopClickPropagation }}" style="max-width:90vw;max-height:90vh;object-fit:contain;position:relative;z-index:101;">
+      <div onClick="{{ stopClickPropagation }}" style="position:relative;z-index:101;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:90vw;">
+        <img alt="" ref="{{ lightboxImgRef }}" style="display:block;max-width:90vw;max-height:80vh;object-fit:contain;">
+        <sc-if value="{{ lightboxHasCaption }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;max-width:900px;color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;line-height:1.5;text-align:center;">{{ lightboxCaption }}</p>
+        </sc-if>
+      </div>
     </sc-if>
   </div>
 </sc-if>
@@ -551,6 +561,17 @@ function buildSections(list) {
     {title:'Industria',key:'industria',options:uniqueVals(list, 'industria')},
     {title:'Tecnología',key:'tecnologiaCombinada',options:uniqueCombinedTechVals(list)}
   ];
+}
+
+// Subir este valor cada vez que se reemplace una imagen o video manteniendo la misma URL.
+const MEDIA_VERSION = '20261021';
+function withVersion(url) {
+  const u = String(url || '').trim();
+  if (!u || /^(data|blob):/i.test(u)) return u;
+  const hashIdx = u.indexOf('#');
+  const base = hashIdx > -1 ? u.slice(0, hashIdx) : u;
+  const hash = hashIdx > -1 ? u.slice(hashIdx) : '';
+  return base + (base.includes('?') ? '&' : '?') + 'v=' + MEDIA_VERSION + hash;
 }
 
 const CATEGORY_ROUTES = { 'Data Strategy':'data-strategy', 'Data Viz':'data-viz', 'Data Fabric':'data-fabric', 'Data IA':'data-ia' };
@@ -647,9 +668,9 @@ class Component extends DCLogic {
     let mediaItems;
     if (caso.media && caso.media.trim()) {
       mediaItems = caso.media.split('|').map(s => s.trim()).filter(Boolean).map(s => {
-        if (s.startsWith('vid:')) return { type:'vid', url: s.slice(4) };
-        if (s.startsWith('img:')) return { type:'img', url: s.slice(4) };
-        return { type:'img', url: s };
+        if (s.startsWith('vid:')) return { type:'vid', url: withVersion(s.slice(4)) };
+        if (s.startsWith('img:')) return { type:'img', url: withVersion(s.slice(4)) };
+        return { type:'img', url: withVersion(s) };
       });
     } else if (caso.imagenUrl) {
       mediaItems = [{ type:'img', url: caso.imagenUrl }];
@@ -761,7 +782,7 @@ class Component extends DCLogic {
     }));
 
     const cases = this.filtered().map(c => {
-      const coverImage = this.getCoverImage(c);
+      const coverImage = withVersion(this.getCoverImage(c));
       return { ...c, coverImage, hasCoverImage: !!coverImage, onOpen: () => this.openDetail(c.id),
         coverImageRef: (el) => { if (el && el.src !== coverImage) el.src = coverImage; } };
     });
@@ -796,14 +817,14 @@ class Component extends DCLogic {
         const token = (ci > -1 ? raw.slice(0, ci) : raw).trim();
         const caption = ci > -1 ? raw.slice(ci + 2).trim() : '';
         let item;
-        if (token.startsWith('vid:')) item = { type:'vid', url: token.slice(4) };
-        else if (token.startsWith('img:')) item = { type:'img', url: token.slice(4) };
-        else item = { type:'img', url: token };
+        if (token.startsWith('vid:')) item = { type:'vid', url: withVersion(token.slice(4)) };
+        else if (token.startsWith('img:')) item = { type:'img', url: withVersion(token.slice(4)) };
+        else item = { type:'img', url: withVersion(token) };
         item.caption = caption;
         return item;
       });
     } else if (caso.imagenUrl) {
-      mediaItems = [{ type:'img', url: caso.imagenUrl, caption:'' }];
+      mediaItems = [{ type:'img', url: withVersion(caso.imagenUrl), caption:'' }];
     } else {
       mediaItems = [{ type:'img', url: 'assets/detail1.png', caption:'' }];
     }
@@ -821,6 +842,7 @@ class Component extends DCLogic {
     const lightboxTotal = imageOnly.length;
     const lightboxIdx = Math.min(this.state.lightboxIndex || 0, lightboxTotal - 1);
     const lightboxUrl = lightboxTotal > 0 ? imageOnly[lightboxIdx].url : '';
+    const lightboxCaption = lightboxTotal > 0 ? (imageOnly[lightboxIdx].caption || '') : '';
 
     const impactoKpis = (caso.impactoKpis || '').split('|').map(s => s.trim()).filter(Boolean).map(seg => {
       const ci = seg.indexOf(':');
@@ -889,7 +911,7 @@ class Component extends DCLogic {
       detailPrevMedia: () => this.prevMedia(mediaTotal), detailNextMedia: () => this.nextMedia(mediaTotal),
       carouselTouchStart: this.carouselTouchStart, carouselTouchEnd: (e) => this.carouselTouchEnd(e, mediaTotal),
       detailImageOnClick: () => this.openLightbox(activeImgIndex),
-      lightboxOpen: !!this.state.lightboxOpen, lightboxUrl, lightboxHasUrl: !!lightboxUrl, lightboxShowNav: lightboxTotal > 1,
+      lightboxOpen: !!this.state.lightboxOpen, lightboxUrl, lightboxHasUrl: !!lightboxUrl, lightboxCaption, lightboxHasCaption: !!lightboxCaption.trim(), lightboxShowNav: lightboxTotal > 1,
       closeLightbox: this.closeLightbox, closeLightboxClick: this.closeLightboxClick, overlayClick: this.overlayClick,
       lightboxPrevClick: this.prevLightboxImg, lightboxNextClick: this.nextLightboxImg,
       stopClickPropagation: this.stopClickPropagation
