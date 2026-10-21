@@ -248,7 +248,7 @@
     ],
     "año": "",
     "pais": "Argentina",
-    "media": "vid:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-agentelegal/caso-agentelegal-vid.mp4::Recorrido del flujo completo: desde subir la demanda hasta el borrador de contestación generado | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-agentelegal/caso-agentelegal-img1.jpg::Pantalla principal del Agente Legal, con los casos recientes y el área para subir la demanda en PDF | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-agentelegal/caso-agentelegal-img2.jpg::Borrador de contestación generado, con los datos faltantes de la demanda marcados para completar y las negativas para verificar",
+    "media": "img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-agentelegal/caso-agentelegal-img1.png::Pantalla principal del Agente Legal, con los casos recientes y el área para subir la demanda en PDF | img:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-agentelegal/caso-agentelegal-img2.png::Borrador de contestación generado, con los datos faltantes de la demanda marcados para completar y las negativas para verificar | vid:https://pub-16de322003bf4eb7a9916276c9584b24.r2.dev/imagenes-hits/caso-agentelegal/caso-agentelegal-vid.mp4::Recorrido del flujo completo: desde subir la demanda hasta el borrador de contestación generado",
     "problemaTitle": "Cuello de botella operativo",
     "problemaItems": "Diversidad de criterios jurídicos: Cada juzgado y abogado tiene lógicas y metodologías específicas de redacción que el agente de IA debe replicar con precisión. | Resistencia y barrera de adopción: Riesgo de rechazo o frustración de los abogados ante la IA debido a falsas expectativas o dificultades en la interacción con el sistema. | Dependencia de insumos clave: Demoras en la entrega de casos reales y datos históricos necesarios para entrenar y calibrar el modelo a tiempo. | Agendas de especialistas ajustadas: Disponibilidad limitada de los profesionales clave para validar diseños y pruebas dentro del ajustado plazo de 5 semanas. | Desviación del alcance pactado: Presión por incorporar automatizaciones externas (como extracción de datos de sistemas del estudio) no contempladas originalmente.",
     "solucionTitle": "Agente de IA legal: automatización y adaptación de respuestas",
@@ -500,7 +500,7 @@
       "Business Intelligence",
       "Logística"
     ],
-    "categoria": "Data Strategy & Viz",
+    "categoria": "Data Strategy, Data Viz",
     "industria": "Agro",
     "area": "Logística, Operaciones",
     "objetivoNegocio": [
@@ -836,11 +836,7 @@
     "descripcionLargaDetalle": "Centralización y gobierno del maestro de materiales y la cadena de suministro de un laboratorio farmacéutico, garantizando la calidad de los datos provenientes de SAP. La solución integra las tablas maestras del ERP en un Data Lake y un Data Warehouse en Azure SQL organizado por esquemas temáticos, y orquesta en Azure Data Factory un sistema de alertas semanales que notifica a cada área sobre desvíos en compras, costos, logística, packaging, normatización y planeamiento antes de que impacten en la producción. Un tablero de Governance en Power BI unifica el seguimiento del cumplimiento y la trazabilidad de los datos maestros.",
     "tags": [
       "Data Governance",
-      "Data Quality",
-      "SAP",
-      "Alertas",
-      "Power BI",
-      "Azure Data Factory"
+      "SAP"
     ],
     "categoria": "Data Strategy, Data Viz",
     "industria": "Laboratorio",
