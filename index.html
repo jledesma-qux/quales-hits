@@ -247,8 +247,14 @@
         <sc-for list="{{ filterSections }}" as="section" hint-placeholder-count="5">
           <div>
             <h4 style="font-size:14px;font-weight:600;color:#003366;margin:0 0 12px;">{{ section.title }}</h4>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+            <sc-for list="{{ section.groups }}" as="group" hint-placeholder-count="1">
+            <div>
+              <sc-if value="{{ group.hasSubtitle }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0 0 10px;font-size:12px;font-weight:600;color:rgba(0,51,102,0.6);">{{ group.subtitle }}</p>
+              </sc-if>
             <div style="display:flex;flex-direction:column;gap:8px;">
-              <sc-for list="{{ section.opts }}" as="opt" hint-placeholder-count="3">
+              <sc-for list="{{ group.opts }}" as="opt" hint-placeholder-count="3">
                 <label onClick="{{ opt.onToggle }}" class="qs-filter-option" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
                   <span style="{{ opt.boxStyle }}">
                     <sc-if value="{{ opt.checked }}" hint-placeholder-val="{{ false }}">
@@ -258,6 +264,9 @@
                   <span style="font-size:14px;color:#374151;">{{ opt.label }}</span>
                 </label>
               </sc-for>
+            </div>
+            </div>
+            </sc-for>
             </div>
           </div>
         </sc-for>
@@ -542,29 +551,101 @@ function matchesAnyArr(selected, values) {
 }
 function splitCommaVals(raw) {
   if (!raw) return [];
-  return String(raw).split(',').map(s => s.trim()).filter(Boolean);
+  const out = []; let depth = 0, cur = '';
+  for (const ch of String(raw)) {
+    if (ch === '(') depth++;
+    else if (ch === ')') depth = Math.max(0, depth - 1);
+    if (ch === ',' && depth === 0) { out.push(cur); cur = ''; } else cur += ch;
+  }
+  out.push(cur);
+  return out.map(s => s.trim()).filter(Boolean);
 }
-function uniqueCombinedTechVals(list) {
-  const seen = new Map();
-  list.forEach(c => {
-    [...splitCommaVals(c.fuenteDatos), ...splitCommaVals(c.tecnologiasUtilizadas)].forEach(s => {
-      const k = s.toLowerCase();
-      if (!seen.has(k)) seen.set(k, s);
-    });
+// ===== Catálogo de tecnologías del filtro avanzado =====
+// Cada filtro agrupa las distintas formas en que la sheet nombra una misma tecnología
+// (columnas fuenteDatos + tecnologiasUtilizadas). Para sumar una variante, agregarla a "alias"
+// en minúsculas y sin tildes. Un valor que no esté en ningún alias ni en TECH_DROP aparece
+// tal cual en el grupo "Otras", para detectarlo y sumarlo acá.
+const TECH_CATALOG = [
+  { group:'Cloud y plataformas', items:[
+    { label:'Google Cloud', alias:['gcp','google cloud','bigquery','big query','google bigquery','dataform','dataflow','google cloud functions'] },
+    { label:'Azure', alias:['azure','azure data lake','azure data factory','azure sql database','logic apps'] },
+    { label:'Snowflake', alias:['snowflake'] },
+    { label:'SQL', alias:['sql','sql server','t-sql','postgresql','oracle','azure sql database','bases de datos corporativas'] },
+    { label:'Terraform', alias:['terraform'] },
+    { label:'Orquestación de datos', alias:['airflow','n8n','azure data factory','logic apps'] }
+  ]},
+  { group:'BI y visualización', items:[
+    { label:'Power BI', alias:['power bi','power bi dataflows'] },
+    { label:'Tableau', alias:['tableau','tableau cloud'] },
+    { label:'Excel / SharePoint', alias:['excel','excel (sharepoint)','sharepoint'] }
+  ]},
+  { group:'IA y desarrollo', items:[
+    { label:'IA generativa', alias:['ia generativa','ia generativa (gemini, claude, gpt)','gemini','gemini api','openrouter api','claude','gpt','llms','langchain'] },
+    { label:'Machine Learning', alias:['machine learning','machine learning (xgboost, scikit-learn, shap)','machine learning (isolation forest)','xgboost','xgboost 2.x','scikit-learn','shap','analisis estadistico (anova)','anova'] },
+    { label:'Python', alias:['python','phyton','python (fastapi)','pandas','pandas/pyarrow','plotly','streamlit'] },
+    { label:'Aplicaciones web', alias:['react','python (fastapi)','fastapi','apis rest','nginx','oauth / sso'] }
+  ]},
+  { group:'Sistemas de negocio', items:[
+    { label:'SAP', alias:['sap','sap erp','sap s/4 hana'] },
+    { label:'ERP', alias:['erp','erp interno','cognos (erp ibm)','sap','sap erp','sap s/4 hana'] },
+    { label:'CRM', alias:['crm','salesforce'] },
+    { label:'Sistemas de RRHH', alias:['sistemas de asistencia','software de nomina'] }
+  ]},
+  { group:'Fuentes de datos', items:[
+    { label:'Datos de mercado y retail', alias:['nielseniq','nielsen / retail','nielsen','idig','datos de distribuidores','sistemas de distribuidores'] },
+    { label:'Sensores e IoT', alias:['sensores de caldera','registros operativos historicos','datos historicos de aerogeneradores','mediciones de velocidad y direccion del viento'] },
+    { label:'Documentos', alias:['demandas en pdf','documentacion interna'] }
+  ]}
+];
+const TECH_DROP = ['contestaciones historicas del estudio','contratos cadenas','criterios de redaccion por juzgado','curvas teoricas de la planta','parquet','docker','github','arca (afip)','vs code','visual studio code','jupyter','jupyter notebook','poetry','category encoders','spec driven development'];
+const TECH_OTHER_GROUP = 'Otras';
+function techKey(s) { return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim(); }
+const TECH_ALIAS_INDEX = (() => {
+  const idx = new Map();
+  TECH_CATALOG.forEach(g => g.items.forEach(it => it.alias.forEach(a => {
+    const k = techKey(a);
+    if (!idx.has(k)) idx.set(k, []);
+    if (!idx.get(k).includes(it.label)) idx.get(k).push(it.label);
+  })));
+  return idx;
+})();
+const TECH_DROP_SET = new Set(TECH_DROP.map(techKey));
+// Devuelve los filtros de tecnología de un caso (sin duplicados).
+function techLabelsFor(caso) {
+  const out = [];
+  [...splitCommaVals(caso.fuenteDatos), ...splitCommaVals(caso.tecnologiasUtilizadas)].forEach(raw => {
+    const k = techKey(raw);
+    if (!k || TECH_DROP_SET.has(k)) return;
+    const labels = TECH_ALIAS_INDEX.get(k) || [raw.trim()];
+    labels.forEach(l => { if (!out.includes(l)) out.push(l); });
   });
-  return Array.from(seen.values()).sort();
+  return out;
 }
+function buildTechGroups(list) {
+  const present = new Set();
+  list.forEach(c => techLabelsFor(c).forEach(l => present.add(l)));
+  const known = new Set();
+  const groups = TECH_CATALOG.map(g => {
+    const opts = g.items.filter(it => { known.add(it.label); return present.has(it.label); })
+      .map(it => ({ label: it.label, search: [it.label, ...it.alias].join(' ') }));
+    return { subtitle: g.group, opts };
+  });
+  const others = Array.from(present).filter(l => !known.has(l)).sort((a, b) => a.localeCompare(b, 'es'));
+  if (others.length) groups.push({ subtitle: TECH_OTHER_GROUP, opts: others.map(l => ({ label: l, search: l })) });
+  return groups.filter(g => g.opts.length);
+}
+function plainGroup(options) { return [{ subtitle: '', opts: options.map(o => ({ label: o, search: o })) }]; }
 function buildSections(list) {
   return [
-    {title:'Área',key:'area',options:uniqueVals(list, 'area')},
-    {title:'País',key:'pais',options:uniqueVals(list, 'pais')},
-    {title:'Industria',key:'industria',options:uniqueVals(list, 'industria')},
-    {title:'Tecnología',key:'tecnologiaCombinada',options:uniqueCombinedTechVals(list)}
+    {title:'Área',key:'area',groups:plainGroup(uniqueVals(list, 'area'))},
+    {title:'País',key:'pais',groups:plainGroup(uniqueVals(list, 'pais'))},
+    {title:'Industria',key:'industria',groups:plainGroup(uniqueVals(list, 'industria'))},
+    {title:'Tecnología',key:'tecnologiaCombinada',groups:buildTechGroups(list)}
   ];
 }
 
 // Subir este valor cada vez que se reemplace una imagen o video manteniendo la misma URL.
-const MEDIA_VERSION = '20261021';
+const MEDIA_VERSION = '20261021-3';
 function withVersion(url) {
   const u = String(url || '').trim();
   if (!u || /^(data|blob):/i.test(u)) return u;
@@ -579,15 +660,28 @@ function slugify(str) {
   return String(str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
-function categoryPath(cat) { return CATEGORY_ROUTES[cat] ? '/' + CATEGORY_ROUTES[cat] : '/casos'; }
+const CATEGORY_ORDER = ['Data Strategy','Data Viz','Data Fabric','Data IA'];
+function categoryPath(cats) {
+  const list = (Array.isArray(cats) ? cats : [cats]).filter(c => CATEGORY_ROUTES[c]);
+  if (list.length === 0) return '/casos';
+  if (list.length === 1) return '/' + CATEGORY_ROUTES[list[0]];
+  const ordered = CATEGORY_ORDER.filter(c => list.includes(c));
+  return '/casos?categorias=' + ordered.map(c => CATEGORY_ROUTES[c]).join(',');
+}
+function categoriesFromQuery(search) {
+  const m = String(search || '').match(/[?&]categorias=([^&#]*)/i);
+  if (!m) return [];
+  const slugs = decodeURIComponent(m[1]).toLowerCase().split(',').map(x => x.trim());
+  return CATEGORY_ORDER.filter(c => slugs.includes(CATEGORY_ROUTES[c]));
+}
 function detailPath(caso) { const slug = slugify(caso && caso.titulo); return '/casos/' + caso.id + (slug ? '-' + slug : ''); }
-function parseRoute(pathname) {
+function parseRoute(pathname, search) {
   const path = (String(pathname || '/').replace(/\/+$/, '') || '/').toLowerCase();
   if (path === '/' || path === '/index.html') return { page:'home' };
-  if (path === '/casos') return { page:'casos', categoria:'Todos' };
+  if (path === '/casos') return { page:'casos', categorias: categoriesFromQuery(search) };
   const seg = path.slice(1);
   const cat = Object.keys(CATEGORY_ROUTES).find(k => CATEGORY_ROUTES[k] === seg);
-  if (cat) return { page:'casos', categoria:cat };
+  if (cat) return { page:'casos', categorias:[cat] };
   const m = path.match(/^\/casos\/([^\/-]+)(?:-.*)?$/);
   if (m) return { page:'detail', detailId:m[1] };
   return { page:'home', invalid:true };
@@ -598,7 +692,7 @@ function canUseHistory() {
 function navigate(path, replace) {
   if (!canUseHistory()) return;
   try {
-    if (window.location.pathname === path) return;
+    if (window.location.pathname + window.location.search === path) return;
     if (replace) window.history.replaceState({}, '', path);
     else window.history.pushState({}, '', path);
   } catch (e) {}
@@ -610,7 +704,7 @@ class Component extends DCLogic {
   state = {
     page: 'home',
     detailId: null,
-    categoria: 'Todos',
+    categorias: [],
     search: '',
     panelOpen: false,
     adv: { industria:[], area:[], pais:[], tecnologiaCombinada:[] },
@@ -635,7 +729,7 @@ class Component extends DCLogic {
   scrollTop = () => { window.scrollTo(0,0); document.documentElement.scrollTop = 0; document.body.scrollTop = 0; };
   findCaso = (id) => this.getCasos().find(c => String(c.id) === String(id));
   goHome = () => { navigate('/'); this.setState({ page:'home', panelOpen:false }); this.scrollTop(); };
-  goCasos = () => { navigate(categoryPath(this.state.categoria)); this.setState({ page:'casos', panelOpen:false }); this.scrollTop(); };
+  goCasos = () => { navigate(categoryPath(this.state.categorias)); this.setState({ page:'casos', panelOpen:false }); this.scrollTop(); };
   openDetail = (id) => {
     const caso = this.findCaso(id);
     navigate(caso ? detailPath(caso) : '/casos/' + id);
@@ -643,10 +737,10 @@ class Component extends DCLogic {
   };
   applyRoute = (replaceInvalid) => {
     if (!canUseHistory()) return;
-    const r = parseRoute(window.location.pathname);
+    const r = parseRoute(window.location.pathname, window.location.search);
     if (r.invalid && replaceInvalid) navigate('/', true);
     const next = { page:r.page, panelOpen:false, lightboxOpen:false };
-    if (r.page === 'casos') next.categoria = r.categoria;
+    if (r.page === 'casos') next.categorias = r.categorias;
     if (r.page === 'detail') { next.detailId = r.detailId; next.mediaIndex = 0; }
     document.body.style.overflow = '';
     this.setState(next, () => { if (!this.state.casosLoading) this.validateDetailRoute(); });
@@ -654,7 +748,7 @@ class Component extends DCLogic {
   validateDetailRoute = () => {
     if (this.state.page !== 'detail') return;
     const caso = this.findCaso(this.state.detailId);
-    if (!caso) { navigate(categoryPath(this.state.categoria), true); this.setState({ page:'casos' }); return; }
+    if (!caso) { navigate(categoryPath(this.state.categorias), true); this.setState({ page:'casos' }); return; }
     navigate(detailPath(caso), true);
   };
   handlePopState = () => { this.applyRoute(true); this.scrollTop(); };
@@ -680,10 +774,7 @@ class Component extends DCLogic {
     return mediaItems.filter(m => m.type !== 'vid');
   };
 
-  splitComma = (raw) => {
-    if (!raw) return [];
-    return String(raw).split(',').map(s => s.trim()).filter(Boolean);
-  };
+  splitComma = (raw) => splitCommaVals(raw);
   parseBulletItems = (raw) => {
     if (!raw || typeof raw !== 'string' || !raw.trim()) return [];
     return raw.split('|').map(s => s.trim()).filter(Boolean).map(seg => {
@@ -732,8 +823,14 @@ class Component extends DCLogic {
     this.componentDidMount_dataFetch();
   }
   componentWillUnmount() { window.removeEventListener('keydown', this.handleKeydown); window.removeEventListener('popstate', this.handlePopState); document.body.style.overflow = ''; }
-  setCategoria = (c) => { navigate(categoryPath(c), true); this.setState({ categoria:c }); };
-  explore = (c) => { navigate(categoryPath(c)); this.setState({ page:'casos', categoria:c, panelOpen:false }); this.scrollTop(); };
+  // Chips acumulables: "Todos" limpia; cada categoría se suma o se quita de la selección.
+  toggleCategoria = (c) => {
+    const cur = this.state.categorias;
+    const next = c === 'Todos' ? [] : (cur.includes(c) ? cur.filter(x => x !== c) : CATEGORY_ORDER.filter(x => x === c || cur.includes(x)));
+    navigate(categoryPath(next), true);
+    this.setState({ categorias: next });
+  };
+  explore = (c) => { navigate(categoryPath([c])); this.setState({ page:'casos', categorias:[c], panelOpen:false }); this.scrollTop(); };
   onSearch = (e) => this.setState({ search: e.target.value });
   openPanel = () => this.setState({ panelOpen:true });
   closePanel = () => this.setState({ panelOpen:false });
@@ -745,38 +842,39 @@ class Component extends DCLogic {
   });
 
   removeFilter = (cat, val) => {
-    if (cat === 'categoria') { navigate('/casos', true); this.setState({ categoria:'Todos' }); }
+    if (cat === 'categoria') { const next = this.state.categorias.filter(x => x !== val); navigate(categoryPath(next), true); this.setState({ categorias: next }); }
     else if (cat === 'search') this.setState({ search:'' });
     else this.setState(s => ({ adv: { ...s.adv, [cat]: s.adv[cat].filter(v=>v!==val) } }));
   };
 
   clearFilters = () => { if (this.state.page === 'casos') navigate('/casos', true); this.setState({
-    categoria:'Todos', search:'',
+    categorias:[], search:'',
     adv:{ industria:[], area:[], pais:[], tecnologiaCombinada:[] }
   }); };
 
   filtered() {
-    const { categoria, search, adv } = this.state;
+    const { categorias, search, adv } = this.state;
+    const selCats = categorias.map(normVal);
     const q = search.toLowerCase();
     return this.getCasos().filter(c => {
-      if (categoria !== 'Todos' && c.categoria !== categoria) return false;
+      if (selCats.length && !splitCommaVals(c.categoria).some(x => selCats.includes(normVal(x)))) return false;
       if (q && !c.titulo.toLowerCase().includes(q) && !c.descripcion.toLowerCase().includes(q) && !c.tags.some(t=>t.toLowerCase().includes(q))) return false;
       if (!matchesAny(adv.industria, c.industria)) return false;
       if (!matchesAny(adv.area, c.area)) return false;
       if (!matchesAny(adv.pais, c.pais)) return false;
-      if (!matchesAnyArr(adv.tecnologiaCombinada, [...splitCommaVals(c.fuenteDatos), ...splitCommaVals(c.tecnologiasUtilizadas)])) return false;
+      if (!matchesAnyArr(adv.tecnologiaCombinada, techLabelsFor(c))) return false;
       return true;
     });
   }
 
   renderVals() {
-    const { page, categoria, search, adv, panelOpen, detailId } = this.state;
+    const { page, categorias, search, adv, panelOpen, detailId } = this.state;
     const cats = ['Todos','Data Strategy','Data Viz','Data Fabric','Data IA'];
 
     const chips = cats.map(c => ({
       label: c,
-      onClick: () => this.setCategoria(c),
-      style: c === categoria
+      onClick: () => this.toggleCategoria(c),
+      style: (c === 'Todos' ? categorias.length === 0 : categorias.includes(c))
         ? CHIP_BASE + "background:#619b5c;color:#fff;border:1px solid transparent;"
         : CHIP_BASE + "background:#fff;border:1px solid rgba(0,0,0,0.15);color:#003366;"
     }));
@@ -788,23 +886,27 @@ class Component extends DCLogic {
     });
 
     const activeFilters = [];
-    if (categoria !== 'Todos') activeFilters.push({ label:categoria, onRemove:()=>this.removeFilter('categoria',categoria) });
+    categorias.forEach(cat => activeFilters.push({ label:cat, onRemove:()=>this.removeFilter('categoria',cat) }));
     if (search) activeFilters.push({ label:'"'+search+'"', onRemove:()=>this.removeFilter('search',search) });
     Object.entries(adv).forEach(([k,vals]) => vals.forEach(v => activeFilters.push({ label:v, onRemove:()=>this.removeFilter(k,v) })));
 
     const boxBase = "width:16px;height:16px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;";
     const pq = (this.state.panelSearch || '').toLowerCase().trim();
-    const filterSections = buildSections(this.getCasos()).map(s => ({
-      title: s.title,
-      opts: s.options.filter(o => !pq || o.toLowerCase().includes(pq)).map(o => {
-        const checked = adv[s.key].includes(o);
-        return {
-          label: o, checked,
-          onToggle: () => this.toggleAdv(s.key, o),
-          boxStyle: checked ? boxBase + "background:#619b5c;border:1px solid #619b5c;" : boxBase + "background:#fff;border:1px solid #cbd5e1;"
-        };
-      })
-    })).filter(s => s.opts.length > 0 || !pq);
+    const pqKey = techKey(pq);
+    const filterSections = buildSections(this.getCasos()).map(s => {
+      const groups = s.groups.map(g => ({
+        subtitle: g.subtitle, hasSubtitle: !!g.subtitle,
+        opts: g.opts.filter(o => !pqKey || techKey(o.search).includes(pqKey)).map(o => {
+          const checked = adv[s.key].includes(o.label);
+          return {
+            label: o.label, checked,
+            onToggle: () => this.toggleAdv(s.key, o.label),
+            boxStyle: checked ? boxBase + "background:#619b5c;border:1px solid #619b5c;" : boxBase + "background:#fff;border:1px solid #cbd5e1;"
+          };
+        })
+      })).filter(g => g.opts.length > 0);
+      return { title: s.title, groups };
+    }).filter(s => s.groups.length > 0);
 
     const casos = this.getCasos();
     const caso = casos.find(c => String(c.id) === String(detailId)) || casos[0];
