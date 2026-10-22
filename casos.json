@@ -222,7 +222,7 @@
   },
   {
     "id": 5,
-    "titulo": "Agente legal (BF Legal)",
+    "titulo": "Agente legal",
     "descripcion": "Desarrollo e implementación de un agente de contestaciones de demandas civiles basado en inteligencia artificial.",
     "descripcionLargaDetalle": "Este proyecto abarca la implementación y puesta en marcha de un Agente de Contestaciones diseñado para automatizar y optimizar la gestión de demandas en el ámbito civil. El sistema procesa los casos y formula respuestas personalizadas siguiendo las particularidades metodológicas de distintos juzgados y profesionales del derecho",
     "tags": [
